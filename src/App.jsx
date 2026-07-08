@@ -4,6 +4,7 @@ import { Search } from "./components/Search.jsx";
 import Spinner from "./components/Spinner.jsx";
 import MovieCard from "./components/MovieCard.jsx";
 import { getTrendingMovies, updateSearchCount } from "../appwrite.js";
+import { Analytics } from "@vercel/analytics/react"
 import './App.css'
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';
@@ -80,6 +81,8 @@ function App() {
   }, [])
 
   return (
+  <>
+  <Analytics />
   <main>
     <div className="pattern" />
 
@@ -122,6 +125,7 @@ function App() {
       </section>
     </div>
   </main>
+      </>
   )
 }
 
