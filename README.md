@@ -2,7 +2,7 @@
 
 Поиск и просмотр фильмов через TMDB API. Блок "Trending Movies" строится не на статике, а на реальной статистике поиска пользователей.
 ## Скриншоты 
-<img width="1920" height="1080" alt="изображение" src="https://github.com/user-attachments/assets/acc58f69-fe1f-45e6-87df-1580819e0185" />
+<img width="1920" height="1080" alt="изображение" src="https://github.com/user-attachments/assets/29490b68-1c32-4355-a11c-a2fe2c8d22df" />
 <img width="1920" height="1080" alt="изображение" src="https://github.com/user-attachments/assets/4188b503-85de-46e1-8131-caaf64280bcd" />
 <img width="1920" height="1080" alt="изображение" src="https://github.com/user-attachments/assets/14c0610a-da05-4f55-8f00-eb6c6205c523" />
 
