@@ -1,6 +1,13 @@
 # 🎬 Movie Discovery App
 
 Поиск и просмотр фильмов через TMDB API. Блок "Trending Movies" строится не на статике, а на реальной статистике поиска пользователей.
+## Скриншоты 
+<img width="1920" height="1080" alt="изображение" src="https://github.com/user-attachments/assets/acc58f69-fe1f-45e6-87df-1580819e0185" />
+<img width="1920" height="1080" alt="изображение" src="https://github.com/user-attachments/assets/4188b503-85de-46e1-8131-caaf64280bcd" />
+<img width="1920" height="1080" alt="изображение" src="https://github.com/user-attachments/assets/568dac11-eca3-485d-9875-ef2b4364184c" />
+
+
+
 
 🔗 **Демо:** [movie-discoveryapp.vecel.app](https://movie-discoveryapp.vercel.app)
 
