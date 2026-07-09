@@ -47,10 +47,17 @@ Movie Discovery App — React-приложение для поиска и про
 ```text
 src/
 ├── assets/
+│   ├── images/
+│   └── icons/
 ├── components/
-├── appwrite.js
+│   ├── MovieCard.jsx
+│   ├── Search.jsx
+│   └── Spinner.jsx
+├── services/
+│   └── appwrite.js
 ├── App.jsx
-└── main.jsx
+├── main.jsx
+└── index.css
 ```
  
 ## Запуск
