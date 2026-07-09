@@ -17,6 +17,26 @@ Movie Discovery App — React-приложение для поиска и про
 · TMDB API 
 · Vercel
 
+## Что было реализовано
+
+- Работа с REST API
+- Debouncing запросов
+- Интеграция BaaS (Appwrite)
+- Управление состоянием React
+- Адаптивная верстка
+- Environment Variables
+- Деплой на Vercel
+- 
+## Как работает Trending
+
+Каждый поисковый запрос сохраняется в Appwrite.
+
+При повторных запросах счетчик увеличивается.
+
+Главная страница показывает Top 5 фильмов по количеству поисков пользователей.
+
+Таким образом блок Trending строится на реальной активности пользователей.
+
 ## Фичи
 
 - Поиск и просмотр фильмов через TMDB API
@@ -24,6 +44,15 @@ Movie Discovery App — React-приложение для поиска и про
 - **Trending Movies** — каждый поисковый запрос логируется в Appwrite, топ-5 показывается по частоте (реальная статистика, не хардкод)
 - Адаптивный UI(mobile-first)
 
+## Архитектура
+
+src/
+ ├── components
+ ├── assets
+ ├── services
+ ├── App.jsx
+ └── main.jsx
+ 
 ## Запуск
 
 ```bash
@@ -45,3 +74,4 @@ VITE_APPWRITE_ENDPOINT=
 ```bash
 npm run dev
 ```
+This project is for educational purposes.
