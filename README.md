@@ -4,11 +4,7 @@
 ## Скриншоты 
 <img width="1920" height="1080" alt="изображение" src="https://github.com/user-attachments/assets/29490b68-1c32-4355-a11c-a2fe2c8d22df" />
 <img width="1920" height="1080" alt="изображение" src="https://github.com/user-attachments/assets/e976b158-bdb9-4928-8bb5-5e8c4917a41c" />
-<img width="1920" height="1080" alt="изображение" src="https://github.com/user-attachments/assets/14c0610a-da05-4f55-8f00-eb6c6205c523" />
-
-
-
-
+<img width="1920" height="1080" alt="изображение" src="https://github.com/user-attachments/assets/84e921c1-a6de-4437-92ba-a492f9dce6b3" />
 
 🔗 **Демо:** [movie-discoveryapp.vecel.app](https://movie-discoveryapp.vercel.app)
 
