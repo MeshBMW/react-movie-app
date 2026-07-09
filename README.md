@@ -42,15 +42,16 @@ Movie Discovery App — React-приложение для поиска и про
 - Debounce на поиске (`react-use`) — меньше лишних запросов при вводе
 - **Trending Movies** — каждый поисковый запрос логируется в Appwrite, топ-5 показывается по частоте (реальная статистика, не хардкод)
 - Адаптивный UI(mobile-first)
-
 ## Архитектура
 
+```text
 src/
- ├── components
- ├── assets
- ├── services
- ├── App.jsx
- └── main.jsx
+├── assets/
+├── components/
+├── services/
+├── App.jsx
+└── main.jsx
+```
  
 ## Запуск
 
