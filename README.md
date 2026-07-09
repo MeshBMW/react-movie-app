@@ -1,6 +1,6 @@
 # 🎬 Movie Discovery App
 
-Поиск и просмотр фильмов через TMDB API. Блок "Trending Movies" строится не на статике, а на реальной статистике поиска пользователей.
+Movie Discovery App — React-приложение для поиска и просмотра фильмов через TMDB API с системой популярных запросов, построенной на Appwrite.
 ## Скриншоты 
 <img width="1920" height="1080" alt="изображение" src="https://github.com/user-attachments/assets/29490b68-1c32-4355-a11c-a2fe2c8d22df" />
 <img width="1920" height="1080" alt="изображение" src="https://github.com/user-attachments/assets/e976b158-bdb9-4928-8bb5-5e8c4917a41c" />
@@ -10,7 +10,12 @@
 
 ## Стек
 
-React 19 · Vite · Tailwind CSS v4 · Appwrite (BaaS) · TMDB API · Vercel
+· React 19 
+· Vite 
+· Tailwind CSS v4 
+· Appwrite (BaaS) 
+· TMDB API 
+· Vercel
 
 ## Фичи
 
