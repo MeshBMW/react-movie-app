@@ -26,7 +26,6 @@ Movie Discovery App — React-приложение для поиска и про
 - Адаптивная верстка
 - Environment Variables
 - Деплой на Vercel
-- 
 ## Как работает Trending
 
 Каждый поисковый запрос сохраняется в Appwrite.
