@@ -1,16 +1,79 @@
-# React + Vite
+# 🎬 Movie Discovery App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Movie Discovery App — React-приложение для поиска и просмотра фильмов через TMDB API с системой популярных запросов, построенной на Appwrite.
+## Скриншоты 
+<img width="1920" height="1080" alt="изображение" src="https://github.com/user-attachments/assets/29490b68-1c32-4355-a11c-a2fe2c8d22df" />
+<img width="1920" height="1080" alt="изображение" src="https://github.com/user-attachments/assets/e976b158-bdb9-4928-8bb5-5e8c4917a41c" />
+<img width="1920" height="1080" alt="изображение" src="https://github.com/user-attachments/assets/84e921c1-a6de-4437-92ba-a492f9dce6b3" />
 
-Currently, two official plugins are available:
+🔗 **Демо:** [movie-discoveryapp.vecel.app](https://movie-discoveryapp.vercel.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Стек
 
-## React Compiler
+· React 19 
+· Vite 
+· Tailwind CSS v4 
+· Appwrite (BaaS) 
+· TMDB API 
+· Vercel
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Что было реализовано
 
-## Expanding the ESLint configuration
+- Работа с REST API
+- Debouncing запросов
+- Интеграция BaaS (Appwrite)
+- Управление состоянием React
+- Адаптивная верстка
+- Environment Variables
+- Деплой на Vercel
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Как работает Trending
+
+Каждый поисковый запрос сохраняется в Appwrite.
+
+При повторных запросах счетчик увеличивается.
+
+Главная страница показывает Top 5 фильмов по количеству поисков пользователей.
+
+Таким образом блок Trending строится на реальной активности пользователей.
+
+## Архитектура
+
+```text
+src/
+├── assets/
+│   ├── images/
+│   └── icons/
+├── components/
+│   ├── MovieCard.jsx
+│   ├── Search.jsx
+│   └── Spinner.jsx
+├── services/
+│   └── appwrite.js
+├── App.jsx
+├── main.jsx
+└── index.css
+```
+ 
+## Запуск
+
+```bash
+git clone https://github.com/MeshBMW/react-movie-app.git
+cd react-movie-app
+npm install
+```
+
+Создать `.env.local`:
+
+```env
+VITE_TMDB_API_KEY=
+VITE_APPWRITE_PROJECT_ID=
+VITE_APPWRITE_DATABASE_ID=
+VITE_APPWRITE_COLLECTION_ID=
+VITE_APPWRITE_ENDPOINT=
+```
+
+```bash
+npm run dev
+```
+This project is for educational purposes.
