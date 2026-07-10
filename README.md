@@ -3,8 +3,8 @@
 Movie Discovery App — React-приложение для поиска и просмотра фильмов через TMDB API с системой популярных запросов, построенной на Appwrite.
 ## Скриншоты 
 <img width="1920" height="1080" alt="изображение" src="https://github.com/user-attachments/assets/29490b68-1c32-4355-a11c-a2fe2c8d22df" />
-<img width="1920" height="1080" alt="изображение" src="https://github.com/user-attachments/assets/e976b158-bdb9-4928-8bb5-5e8c4917a41c" />
-<img width="1920" height="1080" alt="изображение" src="https://github.com/user-attachments/assets/84e921c1-a6de-4437-92ba-a492f9dce6b3" />
+<img width="1920" height="1080" alt="изображение" src="https://github.com/user-attachments/assets/445ef0c1-1f5c-4dc5-bfd1-c28f78603977" />
+<img width="1920" height="1080" alt="изображение" src="https://github.com/user-attachments/assets/0a5985e1-c583-4f28-a935-054ad7ceb9de" />
 
 🔗 **Демо:** [movie-discoveryapp.vecel.app](https://movie-discoveryapp.vercel.app)
 
