@@ -19,26 +19,28 @@ const API_OPTIONS = {
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('')
-  const [errorMessage, setErrorMessage] = useState('')
-  const [movieList, setMovieList] = useState([])
-  const [isLoading, setIsLoading] = useState(false)
   const [debouncedSearch, setDebouncedSearch] = useState('');
+
+  const [isLoading, setIsLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
+
+  const [movieList, setMovieList] = useState([])
   const [trendingMovies, setTrendingMovies] = useState([]);
 
   useDebounce(() => {
     setDebouncedSearch(searchTerm)
   }, 600, [searchTerm]);
 
-  const fetchMovies = async (query='') => {
+  const fetchMovies = async (query='', isLatest) => {
     query = query.trim().toLowerCase();
     setIsLoading(true);
     setErrorMessage('')
-
     try {
       const endpoint = query
           ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}`
           : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`
-      const response = await fetch(endpoint, API_OPTIONS)
+      const latestMovie = await fetch(`${API_BASE_URL}/discover/movie?sort_by=primary_release_date.desc`, API_OPTIONS)
+      const response = isLatest ? latestMovie : await fetch(endpoint, API_OPTIONS)
       const data = await response.json();
 
       if (!response.ok) {
@@ -53,7 +55,7 @@ function App() {
       if(query && data.results.length > 0) {
         await updateSearchCount(query, data.results[0]);
       }
-
+    console.log(data); console.log(response)
     } catch (error) {
       console.log(`Error fetching movies: ${error}`);
       setErrorMessage('Failed to fetch movies. Please try again later.');
@@ -72,6 +74,9 @@ function App() {
       console.log(`Error fetching trending movies: ${error}`);
     }
   }
+  const doNothing = () => {
+    console.log('')
+  }
 
   useEffect(() => {
     fetchMovies(debouncedSearch);
@@ -82,51 +87,66 @@ function App() {
 
   return (
   <>
-  <Analytics />
-  <main>
-    <div className="pattern" />
+    <Analytics />
+    <main>
+      <div className="pattern" />
 
-    <div className="wrapper">
-      <header>
-        <img src="../images/hero.png" alt="Hero Banner"/>
+      <div className="wrapper">
+        <header>
+          <img src="../images/hero.png" alt="Hero Banner"/>
 
-      <h1> Find <span className="text-gradient">Movies</span> You'll  Enjoy Without the Hassle</h1>
+        <h1> Find <span className="text-gradient">Movies</span> You'll  Enjoy Without the Hassle</h1>
 
-      <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      </header>
+        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+        </header>
 
-      {trendingMovies.length > 0 && (
-          <section className="trending">
-            <h2>Trending Movies</h2>
-            <ul>
-              {trendingMovies.map((movie, index) => (
-                  <li key={movie.$id}>
-                    <p>{index + 1}</p>
-                    <img src={movie.poster_url} alt={movie.title}/>
-                  </li>
-              ))}
-            </ul>
-          </section>
-      )}
-
-      <section className="all-movies">
-        <h2>All Movies</h2>
-        {isLoading ? (
-            <Spinner />
-        ) : errorMessage ? (
-            <p className="text-red-500">{errorMessage}</p>
-        ) : (
-            <ul>
-              {movieList.map((movie) => (
-                  <MovieCard key={movie.id} movie={movie}/>
-              ))}
-            </ul>
+        {trendingMovies.length > 0 && (
+            <section className="trending">
+              <h2>Trends</h2>
+              <ul>
+                {trendingMovies.map((movie, index) => (
+                    <li key={movie.$id}>
+                      <p>{index + 1}</p>
+                      <img src={movie.poster_url} alt={movie.title}/>
+                    </li>
+                ))}
+              </ul>
+            </section>
         )}
-      </section>
-    </div>
-  </main>
-      </>
+
+        <section className="all-movies">
+          <div >
+            <span className='text-white text-3xl font-bold'>All Movies</span>
+            <span> • </span>
+            <span className='text-white sortBy'>Sort by <span>
+            <button
+                onClick={() => {fetchMovies('', true)}}
+                className='text-white sortBy-btn'
+            >Newest
+            </button>
+            <span className='text-white'> • </span>
+            <button
+                onClick={() => {fetchMovies('', false)}}
+                className='text-white sortBy-btn'
+            >Popular
+            </button>
+          </span> </span>
+          </div>
+          {isLoading ? (
+              <Spinner />
+          ) : errorMessage ? (
+              <p className="text-red-500">{errorMessage}</p>
+          ) : (
+              <ul>
+                {movieList.map((movie) => (
+                    <MovieCard key={movie.id} movie={movie}/>
+                ))}
+              </ul>
+          )}
+        </section>
+      </div>
+    </main>
+  </>
   )
 }
-
 export default App
