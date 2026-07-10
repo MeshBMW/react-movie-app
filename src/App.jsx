@@ -74,9 +74,6 @@ function App() {
       console.log(`Error fetching trending movies: ${error}`);
     }
   }
-  const doNothing = () => {
-    console.log('')
-  }
 
   useEffect(() => {
     fetchMovies(debouncedSearch);
