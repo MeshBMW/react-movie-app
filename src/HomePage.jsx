@@ -41,16 +41,14 @@ function HomePage() {
         ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}`
         : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`
       const latestMovie = await fetch(`${API_BASE_URL}/discover/movie?sort_by=primary_release_date.desc`, API_OPTIONS)
-      const findMovie = await fetch(`${API_BASE_URL}/find/1084244`)
       const response = isLatest ? latestMovie : await fetch(endpoint, API_OPTIONS)
 
       const data = await response.json();
-      const findById = await findMovie.json()
 
       if (!response.ok) {
         throw new Error('Failed to fetch movies');
       }
-      if(data.Response === 'False' && findById.Respone === 'False') {
+      if(data.Response === 'False') {
         setErrorMessage(data.Error || 'Failed to fetch movies.')
         setMovieList([])
         return;

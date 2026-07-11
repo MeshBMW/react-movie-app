@@ -78,7 +78,7 @@ function MovieDetails({ movieId, onBack }) {
   if (!movie) return null;
 
   const posterUrl = movie.poster_path
-    ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+    ? `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`
     : "/images/no-movie.png";
   const releaseYear = movie.release_date ? movie.release_date.split("-")[0] : "N/A";
   const genres = movie.genres?.map((genre) => genre.name).join(", ") || "N/A";
@@ -90,10 +90,8 @@ function MovieDetails({ movieId, onBack }) {
           Back to movies
         </button>
       )}
-
-      <div className="grid gap-8 rounded-2xl bg-dark-100 p-5 shadow-inner shadow-light-100/10 md:grid-cols-[300px_1fr]">
+      <div className="grid gap-8 rounded-2xl bg-dark-100 p-5 shadow-inner shadow-light-100/10 md:grid-cols-2">
         <img className="w-full rounded-lg object-cover" src={posterUrl} alt={movie.title} />
-
         <div className="space-y-4 text-gray-100">
           <h2>{movie.title}</h2>
           {movie.tagline && <p className="text-light-200">{movie.tagline}</p>}

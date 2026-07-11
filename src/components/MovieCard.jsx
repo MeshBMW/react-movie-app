@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const MovieCard = ({
   movie : {
-    title,   poster_path, release_date,  vote_average,  original_language, overview, vote_count, id
+    title,   poster_path, release_date,  vote_average,  original_language, overview, vote_count, id, backdrop_path
 }}) => {
     const [isFavourite, setIsFavourite] = useState(false)
     const addMovieToFavourite = () => setIsFavourite(!isFavourite);
