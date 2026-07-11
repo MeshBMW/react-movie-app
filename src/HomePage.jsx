@@ -118,7 +118,7 @@ function HomePage() {
 
       <section className="all-movies">
         <div>
-          <span className='text-white text-3xl font-bold'>All Movies</span>
+          <div className='text-white text-3xl font-bold'>All Movies</div>
           <span> • </span>
           <span className='text-white sortBy'>Sort by <span>
             <button
