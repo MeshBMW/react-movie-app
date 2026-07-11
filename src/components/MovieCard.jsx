@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const MovieCard = ({
   movie : {
-    title,   poster_path, release_date,  vote_average,  original_language, overview, vote_count, id, backdrop_path
+    title,   poster_path, release_date,  vote_average,  original_language, overview, vote_count, id,
 }}) => {
     const [isFavourite, setIsFavourite] = useState(false)
     const addMovieToFavourite = () => setIsFavourite(!isFavourite);
@@ -16,7 +16,8 @@ const MovieCard = ({
                 poster_path
                     ? `https://image.tmdb.org/t/p/w500/${poster_path}`
                     : '/images/no-movie.png'}
-                   alt={title}/>
+                   alt={title}
+              />
             </Link>
 
             <div className='mt-4'>
@@ -35,7 +36,7 @@ const MovieCard = ({
                   <button className='like-btn' onClick={() => addMovieToFavourite()}>
                       {isFavourite ? '❤️' : '💜' }
                   </button>
-                <p className='overview'>{overview}</p>
+                <p className='overview'>{`${overview}..`}</p>
               </div>
             </div>
           </div>

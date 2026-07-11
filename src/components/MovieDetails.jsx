@@ -80,8 +80,8 @@ function MovieDetails({ movieId, onBack }) {
   const posterUrl = movie.poster_path
     ? `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`
     : "/images/no-movie.png";
-  const releaseYear = movie.release_date ? movie.release_date.split("-")[0] : "N/A";
-  const genres = movie.genres?.map((genre) => genre.name).join(", ") || "N/A";
+  const releaseYear = movie.release_date
+  const genres = movie.genres?.map((genre) => genre.name).join(" | ") || "N/A";
 
   return (
     <section className="mt-10 space-y-6">
@@ -98,14 +98,12 @@ function MovieDetails({ movieId, onBack }) {
           <p>{movie.overview || "No overview available."}</p>
 
           <div className="grid gap-1.5 text-sm sm:grid-cols-1">
-            <p className='text-white text-[20px]'>Year: <span className='text-light-200'>{releaseYear}</span></p>
+            <p className='text-white text-[20px]'>Release Date: <span className='text-light-200'>{releaseYear}</span></p>
             <p className='text-white text-[20px]'>
               Rating:
-              <span className='text-light-200'> {movie.vote_average ? movie.vote_average.toFixed(1) : "N/A"}</span>
+              <span className='text-light-200'> ⭐{movie.vote_average ? movie.vote_average.toFixed(1) : "N/A"} / {movie.vote_count ?? "N/A"}</span>
             </p>
-            <p className='text-white text-[20px]'>
-              Votes: <span className='text-light-200'> {movie.vote_count ?? "N/A"}</span>
-            </p>
+
             <p className='text-white text-[20px]'>
               Duration: <span className='text-light-200'> {movie.runtime ? `${movie.runtime} min` : "N/A"}</span>
             </p>
@@ -117,9 +115,8 @@ function MovieDetails({ movieId, onBack }) {
             </p>
             <Link
               to='/'
-              className='p-1 rounded-[5px] bg-blue-950 max-w-32.25 shadow-2xs text-white'
-            >
-              Go back to Movies
+              className='p-2 rounded-[5px] bg-blue-950 max-w-33 shadow-2xs text-white'
+            >← Back to Movies
             </Link>
           </div>
         </div>
