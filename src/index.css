@@ -102,7 +102,7 @@ html { scroll-behavior: smooth; }
       @apply grid grid-cols-1 gap-5 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4;
     }
     & .sortBy-btn {
-      @apply p-2 cursor-pointer bg-blue-950 rounded-[10px] shadow-2xl
+      @apply p-2 cursor-pointer bg-blue-950 rounded-[10px] shadow-2xl grow flex-wrap;
     }
   }
 

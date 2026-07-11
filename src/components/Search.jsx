@@ -3,7 +3,7 @@ export function Search({searchTerm, setSearchTerm}) {
   return (
       <div className="search">
         <div>
-        <img src="search.svg" alt="*"/>
+        <img src="/search.svg" alt="*"/>
 
           <input
             className="text-white  outline-none"
