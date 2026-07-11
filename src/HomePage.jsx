@@ -59,7 +59,6 @@ function HomePage() {
       if(query && data.results.length > 0) {
         await updateSearchCount(query, data.results[0]);
       }
-      console.log(data); console.log(response)
     } catch (error) {
       console.log(`Error fetching movies: ${error}`);
       setErrorMessage('Failed to fetch movies. Please try again later.');
