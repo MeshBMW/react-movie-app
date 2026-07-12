@@ -2,7 +2,7 @@ import { useEffect, useState,} from "react";
 import Spinner from "./Spinner.jsx";
 import {Link} from "react-router-dom";
 
-const API_BASE_URL = "https://api.themoviedb.org/3";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const API_OPTIONS = {
   method: "GET",
@@ -53,7 +53,10 @@ function MovieDetails({ movieId, onBack }) {
     return (
       <section className="mt-10">
         {onBack && (
-          <button className="mb-6 cursor-pointer rounded-lg bg-blue-950 px-4 py-2 text-white" onClick={onBack}>
+          <button
+            className="mb-6 cursor-pointer rounded-lg bg-blue-950 px-4 py-2 text-white"
+            onClick={onBack}
+          >
             Back to movies
           </button>
         )}
@@ -66,7 +69,9 @@ function MovieDetails({ movieId, onBack }) {
     return (
       <section className="mt-10">
         {onBack && (
-          <button className="mb-6 cursor-pointer rounded-lg bg-blue-950 px-4 py-2 text-white" onClick={onBack}>
+          <button className="mb-6 cursor-pointer rounded-lg bg-blue-950 px-4 py-2 text-white"
+            onClick={onBack}
+          >
             Back to movies
           </button>
         )}
@@ -77,7 +82,7 @@ function MovieDetails({ movieId, onBack }) {
 
   if (!movie) return null;
 
-  const posterUrl = movie.poster_path
+  const backdropUrl = movie.poster_path
     ? `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`
     : "/images/no-movie.png";
   const releaseYear = movie.release_date
@@ -91,7 +96,7 @@ function MovieDetails({ movieId, onBack }) {
         </button>
       )}
       <div className="grid gap-8 rounded-2xl bg-dark-100 p-5 shadow-inner shadow-light-100/10 md:grid-cols-2">
-        <img className="w-full rounded-lg object-cover" src={posterUrl} alt={movie.title} />
+        <img className="w-full rounded-lg object-cover" src={backdropUrl} alt={movie.title} />
         <div className="space-y-4 text-gray-100">
           <h2>{movie.title}</h2>
           {movie.tagline && <p className="text-light-200">{movie.tagline}</p>}

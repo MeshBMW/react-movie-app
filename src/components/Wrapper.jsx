@@ -2,14 +2,12 @@ import { Search } from "./Search.jsx";
 import { Link } from "react-router-dom";
 import AllMovies from "./AllMovies.jsx";
 
-function Wrapper({searchTerm, setSearchTerm, isLoading, errorMessage, movieList, trendingMovies, fetchMovies}) {
+function Wrapper({ searchTerm, setSearchTerm, isLoading, errorMessage, movieList, trendingMovies, fetchMovies }) {
   return (
     <div className="wrapper">
       <header>
         <img src="/images/hero.png" alt="Hero Banner"/>
-
         <h1> Find <span className="text-gradient">Movies</span> You'll  Enjoy Without the Hassle</h1>
-
         <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       </header>
 
