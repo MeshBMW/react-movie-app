@@ -13,9 +13,10 @@ const API_OPTIONS = {
 };
 
 async function getMovieById(movieId) {
-  const response = await fetch(`${API_BASE_URL}/movie/${movieId}`, API_OPTIONS);
-  const data = await response.json();
+  const response = await fetch(`${API_BASE_URL}/movie/${movieId}?append_to_response=credits`, API_OPTIONS);
 
+  const data = await response.json();
+  console.log(data)
   if (!response.ok) {
     throw new Error(data.status_message || "Failed to fetch movie details");
   }
@@ -82,11 +83,13 @@ function MovieDetails({ movieId, onBack }) {
 
   if (!movie) return null;
 
-  const backdropUrl = movie.poster_path
+  const backdropUrl = movie.backdrop_path
     ? `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`
     : "/images/no-movie.png";
   const releaseYear = movie.release_date
   const genres = movie.genres?.map((genre) => genre.name).join(" | ") || "N/A";
+  const actors = movie.credits?.cast?.slice(0, 8) || []
+  console.log(actors)
 
   return (
     <section className="mt-10 space-y-6">
@@ -118,9 +121,25 @@ function MovieDetails({ movieId, onBack }) {
             <p className='text-white text-[20px]'>
               Genres: <span className='text-light-200'>{genres}</span>
             </p>
+            <div className='text-white text-[18px]'>
+              Actors: {''}
+              <div className='text-[0.8rem] grid grid-cols-2 gap-3 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6'>
+                {actors.map((actor) => (
+                    <div key={actor.id}>
+                      <img className='aspect-[2/3] w-full rounded-lg object-cover' src={
+                        actor?.profile_path
+                          ? `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
+                          : '/images/no-actor.png'
+                      } alt=""/>
+                      <p>{actor.name}</p>
+                    </div>
+                  )
+                )}
+              </div>
+            </div>
             <Link
               to='/'
-              className='p-2 rounded-[5px] bg-blue-950 max-w-33 shadow-2xs text-white'
+              className='p-2 rounded-[5px] bg-blue-950 max-w-[136px] shadow-2xs text-white'
             >← Back to Movies
             </Link>
           </div>
