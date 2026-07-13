@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const MovieCard = ({
   movie : {
-    title,   poster_path, release_date,  vote_average,  original_language, overview, vote_count, id,
+    title, poster_path, release_date,  vote_average,  original_language, overview, vote_count, id,
 }}) => {
     const [isFavourite, setIsFavourite] = useState(false)
     const addMovieToFavourite = () => setIsFavourite(!isFavourite);
@@ -27,8 +27,6 @@ const MovieCard = ({
                   <img src='/star.svg' alt="Star Icon"/>
                   <p>{vote_average ? vote_average.toFixed(1) : 'N/A'}</p>
                 </div>
-                <span>•</span>
-                  <p className='text-cyan-600'>{vote_count}</p>
                   <span>•</span>
                 <p className='lang'>{original_language}</p>
                 <span>•</span>

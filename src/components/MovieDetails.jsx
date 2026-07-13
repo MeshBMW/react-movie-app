@@ -16,7 +16,6 @@ async function getMovieById(movieId) {
   const response = await fetch(`${API_BASE_URL}/movie/${movieId}?append_to_response=credits`, API_OPTIONS);
 
   const data = await response.json();
-  console.log(data)
   if (!response.ok) {
     throw new Error(data.status_message || "Failed to fetch movie details");
   }
@@ -83,13 +82,9 @@ function MovieDetails({ movieId, onBack }) {
 
   if (!movie) return null;
 
-  const backdropUrl = movie.backdrop_path
-    ? `https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`
-    : "/images/no-movie.png";
   const releaseYear = movie.release_date
   const genres = movie.genres?.map((genre) => genre.name).join(" | ") || "N/A";
-  const actors = movie.credits?.cast?.slice(0, 8) || []
-  console.log(actors)
+  const actors = movie.credits?.cast?.slice(0, 9) || []
 
   return (
     <section className="mt-10 space-y-6">
@@ -99,42 +94,61 @@ function MovieDetails({ movieId, onBack }) {
         </button>
       )}
       <div className="grid gap-8 rounded-2xl bg-dark-100 p-5 shadow-inner shadow-light-100/10 md:grid-cols-2">
-        <img className="w-full rounded-lg object-cover" src={backdropUrl} alt={movie.title} />
-        <div className="space-y-4 text-gray-100">
-          <h2>{movie.title}</h2>
-          {movie.tagline && <p className="text-light-200">{movie.tagline}</p>}
-          <p>{movie.overview || "No overview available."}</p>
+        <div className="flex flex-col gap-6 sm:flex-row">
+          {/* Poster + Title */}
+          <div className="flex flex-col gap-3 sm:w-1/3">
+            <h2 className="text-white text-xl font-bold text-center sm:text-left">
+              {movie.title}({releaseYear.split('-')[0]})
+            </h2>
+            <img
+              className="w-full max-w-[400px] rounded-lg object-cover mx-auto sm:mx-0"
+              src={
+                movie.poster_path
+                  ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+                  : '/images/no-poster.png'
+              }
+              alt={movie.title}
+            />
+          </div>
 
-          <div className="grid gap-1.5 text-sm sm:grid-cols-1">
-            <p className='text-white text-[20px]'>Release Date: <span className='text-light-200'>{releaseYear}</span></p>
-            <p className='text-white text-[20px]'>
+          {/* Info */}
+          <div className="grid gap-1.5 text-sm sm:grid-cols-1 sm:w-2/3">
+            {/* invisible spacer, same classes as the real h2, to push this column down */}
+            <h2 className="text-xl font-bold invisible hidden sm:block">
+              {movie.title}
+            </h2>
+
+            <p className='text-white '>Release Date: <span className='text-light-200'>{releaseYear}</span></p>
+            <p className='text-white '>
               Rating:
               <span className='text-light-200'> ⭐{movie.vote_average ? movie.vote_average.toFixed(1) : "N/A"} / {movie.vote_count ?? "N/A"}</span>
             </p>
-
-            <p className='text-white text-[20px]'>
+            <p className='text-white'>
               Duration: <span className='text-light-200'> {movie.runtime ? `${movie.runtime} min` : "N/A"}</span>
             </p>
-            <p className='text-white text-[20px]'>
+            <p className='text-white'>
               Language: <span className='text-light-200'>{movie.original_language?.toUpperCase() || "N/A"}</span>
             </p>
-            <p className='text-white text-[20px]'>
+            <p className='text-white'>
               Genres: <span className='text-light-200'>{genres}</span>
             </p>
-            <div className='text-white text-[18px]'>
+            <div className='text-white'>
               Actors: {''}
               <div className='text-[0.8rem] grid grid-cols-2 gap-3 xs:grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6'>
                 {actors.map((actor) => (
-                    <div key={actor.id}>
-                      <img className='aspect-[2/3] w-full rounded-lg object-cover' src={
+                  <div key={actor.id}>
+                    <img
+                      className='aspect-[2/3] w-full rounded-lg object-cover'
+                      src={
                         actor?.profile_path
                           ? `https://image.tmdb.org/t/p/w500/${actor.profile_path}`
                           : '/images/no-actor.png'
-                      } alt=""/>
-                      <p>{actor.name}</p>
-                    </div>
-                  )
-                )}
+                      }
+                      alt=""
+                    />
+                    <p>{actor.name}</p>
+                  </div>
+                ))}
               </div>
             </div>
             <Link
