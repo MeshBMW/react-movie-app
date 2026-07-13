@@ -13,7 +13,7 @@ const API_OPTIONS = {
 };
 
 async function getMovieById(movieId) {
-  const response = await fetch(`${API_BASE_URL}/movie/${movieId}?append_to_response=credits`, API_OPTIONS);
+  const response = await fetch(`${API_BASE_URL}/movie/${movieId}?append_to_response=credits,videos`, API_OPTIONS);
 
   const data = await response.json();
   if (!response.ok) {
@@ -22,12 +22,27 @@ async function getMovieById(movieId) {
 
   return data;
 }
+function getTrailer(videos) {
+  if (!videos?.results?.length) return null;
+
+  // сначала ищем официальный трейлер
+  const trailer = videos.results.find(
+    (v) => v.site === "YouTube" && v.type === "Trailer" && v.official
+  );
+
+  // если официального нет — берём любой трейлер или тизер
+  const fallback = videos.results.find(
+    (v) => v.site === "YouTube" && (v.type === "Trailer" || v.type === "Teaser")
+  );
+
+  return trailer || fallback || null;
+}
 
 function MovieDetails({ movieId, onBack }) {
   const [movie, setMovie] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-
+  const trailer = movie ? getTrailer(movie.videos) : null;
   useEffect(() => {
     if (!movieId) return;
 
@@ -158,6 +173,21 @@ function MovieDetails({ movieId, onBack }) {
             </Link>
           </div>
         </div>
+      </div>
+      <div>
+        {/* остальной контент */}
+        {trailer && (
+          <div className="aspect-video w-full">
+            <iframe
+              width="100%"
+              height="100%"
+              src={`https://www.youtube.com/embed/${trailer.key}`}
+              title={trailer.name}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        )}
       </div>
     </section>
   );
