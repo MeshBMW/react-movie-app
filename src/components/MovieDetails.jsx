@@ -112,7 +112,7 @@ function MovieDetails({ movieId, onBack }) {
         <div className="flex flex-col gap-6 sm:flex-row">
           {/* Poster + Title */}
           <div className="flex flex-col gap-3 sm:w-1/3">
-            <h2 className="text-white text-xl font-bold text-center sm:text-left">
+            <h2 className="text-white text-[1rem] text-xl font-bold text-center sm:text-left">
               {movie.title}({releaseYear.split('-')[0]})
             </h2>
             <img
