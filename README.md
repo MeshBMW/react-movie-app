@@ -27,6 +27,8 @@ Movie Discovery App — React-приложение для поиска и про
 - Адаптивная верстка
 - Environment Variables
 - Деплой на Vercel
+- Skeleton Loader
+- Пагинация
 
 ## Как работает Trending
 
@@ -42,10 +44,12 @@ Movie Discovery App — React-приложение для поиска и про
 
 ```text
 src/
-├── components/  
+├── components/
+├── hooks/
+├── pages/
 ├── services/
+├── utils/
 ├── App.jsx
-├── HomePage.jsx
 ├── main.jsx
 └── index.css
 ```
@@ -66,6 +70,7 @@ VITE_APPWRITE_PROJECT_ID=
 VITE_APPWRITE_DATABASE_ID=
 VITE_APPWRITE_COLLECTION_ID=
 VITE_APPWRITE_ENDPOINT=
+VITE_API_BASE_URL=
 ```
 
 ```bash
