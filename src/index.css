@@ -3,7 +3,10 @@
 
 @import "tailwindcss";
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+}
 
 @theme {
   --color-primary: #030014;
@@ -51,6 +54,14 @@ html { scroll-behavior: smooth; }
 }
 
 @layer components {
+  main {
+    @apply min-h-screen relative bg-primary;
+    background-image: radial-gradient(
+            ellipse 800px 500px at 50% 0%,
+            rgba(171, 139, 255, 0.08),
+            transparent 70%
+    );
+  }
   .movie-card {
     @apply transition-[transform,box-shadow] duration-350 ease-[cubic-bezier(.16,1,.3,1)];
   }
@@ -130,12 +141,12 @@ html { scroll-behavior: smooth; }
     }
   }
 
-  .all-movies {
-    @apply space-y-9;
+    .all-movies {
+      @apply space-y-9;
 
-    & ul {
-      @apply grid grid-cols-1 gap-5 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4;
-    }
+      & ul {
+        @apply grid grid-cols-1 gap-5 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4;
+      }
     & .sortBy-btn {
       @apply p-2 cursor-pointer bg-blue-950 rounded-[10px] shadow-2xl grow flex-wrap;
     }

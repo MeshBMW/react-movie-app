@@ -3,9 +3,12 @@ import './index.css'
 import App from './App.jsx'
 import 'tailwindcss'
 import {BrowserRouter} from "react-router-dom";
+import {FavoritesProvider} from "./utils/FavoritesContext.jsx";
 
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
-    <App />
+    <FavoritesProvider>
+      <App />
+    </FavoritesProvider>
   </BrowserRouter>
 )

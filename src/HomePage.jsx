@@ -25,16 +25,16 @@ function HomePage() {
     }
   }
 
-  const fetchMovies = async (query='', isLatest) => {
+  const fetchMovies = async (query='', isLatest, pageNum = 1) => {
     query = query.trim().toLowerCase();
     setIsLoading(true);
     setErrorMessage('')
     try {
       const endpoint = query
-        ? `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}`
-        : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`
+        ? `${API_BASE_URL}/search/movie?include_adult=false&query=${encodeURIComponent(query)}`
+        : `${API_BASE_URL}/discover/movie?include_adult=false&page=${pageNum}&sort_by=popularity.desc`
 
-      const latestMovie = await fetch(`${API_BASE_URL}/discover/movie?sort_by=primary_release_date.desc`, API_OPTIONS)
+      const latestMovie = await fetch(`${API_BASE_URL}/discover/movie?include_adult=false&sort_by=primary_release_date.desc`, API_OPTIONS)
 
       const response = isLatest ? latestMovie : await fetch(endpoint, API_OPTIONS)
 

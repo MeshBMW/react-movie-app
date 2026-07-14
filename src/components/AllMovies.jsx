@@ -1,28 +1,59 @@
-import Spinner from "./Spinner.jsx";
 import MovieCard from "./MovieCard.jsx";
+import MovieCardSkeleton from "../utils/MovieCardSkeleton.jsx";
+import {useState} from "react";
 
 function AllMovies({ isLoading, errorMessage, movieList, fetchMovies}) {
+  const [page, setPage] = useState(1);
+  const noZero = page === 1 ? 1 : page - 1
+  const nextPage = () => {
+    fetchMovies('', false, page + 1)
+    setPage(page + 1)
+  };
+  const prevPage = () => {
+    fetchMovies('', false, noZero)
+    setPage(noZero);
+  };
+
   return (
     <section className="all-movies">
       <div>
-        <div className='text-white text-3xl font-bold'>All Movies</div>
+        <div className='text-white text-3xl font-bold mb-2'>All Movies <button
+          className='text-white p-1 bg-blue-950 rounded-lg cursor-pointer '
+          onClick={prevPage}
+        > {`<`}
+        </button>
+          <span className='text-light-100 '> {page} </span>
+          <button
+            className='text-white p-1 bg-blue-950 rounded-lg cursor-pointer'
+            onClick={nextPage}
+          >
+            {`>`}
+          </button>
+        </div>
         <span> • </span>
         <span className='text-white sortBy'>Sort by <span>
             <button
               onClick={() => fetchMovies('', true)}
               className='text-white sortBy-btn'
-            >Newest
+            >
+              Newest
             </button>
           <span className='text-white'> • </span>
           <button
             onClick={() => fetchMovies('', false)}
             className='text-white sortBy-btn'
-          >Popular
+          >
+            Popular
               </button>
             </span> </span>
+
       </div>
       {isLoading ? (
-        <Spinner />
+        <ul>
+          {Array.from({ length: 20 }).map((_, i) => (
+            <MovieCardSkeleton key={i} />
+          ))}
+        </ul>
       ) : errorMessage ? (
         <p className="text-red-500">{errorMessage}</p>
       ) : (
