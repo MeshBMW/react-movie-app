@@ -20,14 +20,15 @@ function AllMovies({ isLoading, errorMessage, movieList, fetchMovies}) {
         <div className='text-white text-3xl font-bold mb-2'>All Movies <button
           className='text-white p-1 bg-blue-950 rounded-lg cursor-pointer '
           onClick={prevPage}
-        > {`<`}
+        >
+          <img src='/prev.svg' alt=""/>
         </button>
           <span className='text-light-100 '> {page} </span>
           <button
             className='text-white p-1 bg-blue-950 rounded-lg cursor-pointer'
             onClick={nextPage}
           >
-            {`>`}
+            <img src='/next.svg' alt=""/>
           </button>
         </div>
         <span> • </span>
@@ -45,7 +46,8 @@ function AllMovies({ isLoading, errorMessage, movieList, fetchMovies}) {
           >
             Popular
               </button>
-            </span> </span>
+            </span>
+        </span>
 
       </div>
       {isLoading ? (
