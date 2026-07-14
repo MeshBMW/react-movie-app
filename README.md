@@ -5,6 +5,7 @@ Movie Discovery App — React-приложение для поиска и про
 <img width="1920" height="1080" alt="изображение" src="https://github.com/user-attachments/assets/29490b68-1c32-4355-a11c-a2fe2c8d22df" />
 <img width="1920" height="1080" alt="изображение" src="https://github.com/user-attachments/assets/597110bf-0849-48db-b1b3-40adfaddbf66" />
 <img width="1920" height="1080" alt="изображение" src="https://github.com/user-attachments/assets/73345d89-670e-451f-ba74-81a35f9c5f87" />
+<img width="1920" height="803" alt="изображение" src="https://github.com/user-attachments/assets/7aee8dde-423d-4e00-a3cf-12057182005b" />
 <img width="1920" height="1080" alt="изображение" src="https://github.com/user-attachments/assets/c685664f-68a2-41b3-be6b-5c17d892260b" />
 
 🔗 **Демо:** [movie-discoveryapp.vecel.app](https://movie-discoveryapp.vercel.app)
