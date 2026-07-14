@@ -1,24 +1,25 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useRipple from "../hooks/useRipple";
 
 const MovieCard = ({
   movie : {
-    title, poster_path, release_date,  vote_average,  original_language, overview, vote_count, id,
+    title, poster_path, release_date,  vote_average,  original_language, overview, id,
 }}) => {
     const [isFavourite, setIsFavourite] = useState(false)
     const addMovieToFavourite = () => setIsFavourite(!isFavourite);
+  const handleClick = useRipple();
 
   return (
       <>
-          <div className="movie-card">
-            <Link to={`/movies/${id}`}>
+        <Link to={`/movies/${id}`}>
+          <div className="movie-card" onClick={handleClick} >
               <img src={
                 poster_path
                     ? `https://image.tmdb.org/t/p/w500/${poster_path}`
                     : '/images/no-movie.png'}
                    alt={title}
               />
-            </Link>
 
             <div className='mt-4'>
               <h3>{title}</h3>
@@ -31,13 +32,17 @@ const MovieCard = ({
                 <p className='lang'>{original_language}</p>
                 <span>•</span>
                 <p className='year'>{release_date ? release_date.split('-')[0] : 'N/A'}</p>
-                  <button className='like-btn' onClick={() => addMovieToFavourite()}>
+                  <button
+                    className='like-btn'
+                    onClick={addMovieToFavourite}
+                  >
                       {isFavourite ? '❤️' : '💜' }
                   </button>
                 <p className='overview'>{`${overview}..`}</p>
               </div>
             </div>
           </div>
+        </Link>
       </>
   )
 }

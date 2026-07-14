@@ -120,7 +120,7 @@ function MovieDetails({ movieId, onBack }) {
               src={
                 movie.poster_path
                   ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-                  : '/images/no-poster.png'
+                  : '/images/no-movie.png'
               }
               alt={movie.title}
             />
@@ -176,7 +176,8 @@ function MovieDetails({ movieId, onBack }) {
       </div>
       <div>
         {/* остальной контент */}
-        {trailer && (
+        {trailer
+          ? (
           <div className="aspect-video w-full">
             <iframe
               width="100%"
@@ -187,7 +188,9 @@ function MovieDetails({ movieId, onBack }) {
               allowFullScreen
             />
           </div>
-        )}
+        ) :
+          <p className='text-white'>No trailer available</p>
+        }
       </div>
     </section>
   );

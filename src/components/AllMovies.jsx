@@ -9,13 +9,13 @@ function AllMovies({ isLoading, errorMessage, movieList, fetchMovies}) {
         <span> • </span>
         <span className='text-white sortBy'>Sort by <span>
             <button
-              onClick={() => {fetchMovies('', true)}}
+              onClick={() => fetchMovies('', true)}
               className='text-white sortBy-btn'
             >Newest
             </button>
           <span className='text-white'> • </span>
           <button
-            onClick={() => {fetchMovies('', false)}}
+            onClick={() => fetchMovies('', false)}
             className='text-white sortBy-btn'
           >Popular
               </button>
@@ -27,8 +27,12 @@ function AllMovies({ isLoading, errorMessage, movieList, fetchMovies}) {
         <p className="text-red-500">{errorMessage}</p>
       ) : (
         <ul>
-          {movieList.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
+          {movieList.map((movie, id) => (
+            <MovieCard
+              key={movie.id}
+              movie={movie}
+              style={{ animationDelay: `${Math.min(id * 60, 600)}ms` }}
+            />
           ))}
         </ul>
       )}
