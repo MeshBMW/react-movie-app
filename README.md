@@ -27,6 +27,8 @@ Movie Discovery App — React-приложение для поиска и про
 - Адаптивная верстка
 - Environment Variables
 - Деплой на Vercel
+- Skeleton Loader
+- Пагинация
 
 ## Как работает Trending
 
