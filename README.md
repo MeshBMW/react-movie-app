@@ -42,10 +42,12 @@ Movie Discovery App — React-приложение для поиска и про
 
 ```text
 src/
-├── components/  
+├── components/
+├── hooks/
+├── pages/
 ├── services/
+├── utils/
 ├── App.jsx
-├── HomePage.jsx
 ├── main.jsx
 └── index.css
 ```
