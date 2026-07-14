@@ -6,7 +6,7 @@ export function Search({searchTerm, setSearchTerm}) {
         <img src="/search.svg" alt="*"/>
 
           <input
-            className="text-white  outline-none"
+            className="text-white outline-none"
             type="text"
             placeholder="Search through 1000's of movies"
             value={searchTerm}

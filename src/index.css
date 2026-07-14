@@ -94,7 +94,6 @@ html {
   button:focus-visible,
   input:focus-visible {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(171, 139, 255, 0.35);
   }
 
   .pattern {

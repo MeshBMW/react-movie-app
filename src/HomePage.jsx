@@ -18,12 +18,12 @@ function HomePage() {
   const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
   const API_OPTIONS = {
-    method: 'GET',
+    method: "GET",
     headers: {
-      accept: 'application/json',
-      Authorization: `Bearer ${API_KEY}`
-    }
-  }
+      accept: "application/json",
+      Authorization: `Bearer ${API_KEY}`,
+    },
+  };
 
   const fetchMovies = async (query='', isLatest, pageNum = 1) => {
     query = query.trim().toLowerCase();
@@ -34,7 +34,8 @@ function HomePage() {
         ? `${API_BASE_URL}/search/movie?include_adult=false&query=${encodeURIComponent(query)}`
         : `${API_BASE_URL}/discover/movie?include_adult=false&page=${pageNum}&sort_by=popularity.desc`
 
-      const latestMovie = await fetch(`${API_BASE_URL}/discover/movie?include_adult=false&sort_by=primary_release_date.desc`, API_OPTIONS)
+      const latestMovie =
+        await fetch(`${API_BASE_URL}/discover/movie?include_adult=false&page=${pageNum}&sort_by=primary_release_date.desc`, API_OPTIONS)
 
       const response = isLatest ? latestMovie : await fetch(endpoint, API_OPTIONS)
 
@@ -60,7 +61,6 @@ function HomePage() {
       setIsLoading(false);
     }
   }
-
   useDebounce(() => {
     setDebouncedSearch(searchTerm)
   }, 600, [searchTerm]);
