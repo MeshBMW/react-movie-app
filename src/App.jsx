@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes, useParams } from 'react-router-dom'
-import MovieDetails from './components/MovieDetails.jsx'
-import HomePage from "./HomePage.jsx";
+import MovieDetails from './pages/MovieDetails.jsx'
+import HomePage from "./pages/HomePage.jsx";
 
 function MovieDetailsPage() {
   const { movieId } = useParams();

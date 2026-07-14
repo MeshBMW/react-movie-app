@@ -10,7 +10,7 @@ const MovieActors = ({actors}) => {
               src={
                 actor?.profile_path
                   ? `https://image.tmdb.org/t/p/w185/${actor.profile_path}`
-                  : "/images/no-actor.png"
+                  : "/images/no-image.jpg"
               }
               alt={actor.name}
             />

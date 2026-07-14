@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Spinner from "./Spinner.jsx";
+import Spinner from "../components/Spinner.jsx";
 import { Link, useParams } from "react-router-dom";
 import { getMovieById, getTrailer, getCertification } from "../services/tmdb.js";
-import MovieInfo from "./MovieInfo.jsx";
+import MovieInfo from "../components/MovieInfo.jsx";
 
 
 // movieId / onBack — опциональные пропсы для модалки.

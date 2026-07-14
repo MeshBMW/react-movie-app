@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react'
 import { useDebounce } from "react-use";
-import { getTrendingMovies, updateSearchCount } from "./services/appwrite.js";
+import { getTrendingMovies, updateSearchCount } from "../services/appwrite.js";
 import { Analytics } from "@vercel/analytics/react"
-import Wrapper from "./components/Wrapper.jsx";
-import './App.css'
+import Wrapper from "../components/Wrapper.jsx";
+import '../App.css'
 
 function HomePage() {
   const [searchTerm, setSearchTerm] = useState('')
