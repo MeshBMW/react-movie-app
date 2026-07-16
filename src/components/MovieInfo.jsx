@@ -1,10 +1,10 @@
 import MovieHeader from "./MovieHeader.jsx";
 import MovieIMG from "./MovieIMG.jsx";
 import MovieRow from "./MovieRow.jsx";
-import {Link} from "react-router-dom";
 import MovieGenres from "./MovieGenres.jsx";
 import MovieDetailsList from "./MovieDetailsList.jsx";
 import MovieActors from "./MovieActors.jsx";
+import { Link } from "react-router-dom";
 
 const InfoRow = ({ label, children }) => (
   <div className="flex flex-col gap-0.5 sm:flex-row sm:gap-6">
@@ -17,14 +17,19 @@ const MovieInfo = ({
   genres, actors, similarMovies ,languages, countries, companies
 }) => {
   return (
-    <div className="mx-auto max-w-7xl rounded-[32px] border border-light-100/10 bg-dark-100 p-6 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.85)] fade-in-up sm:p-10">
-      {/* Title + rating */}
-      <MovieHeader certification={certification} movie={movie} releaseYear={releaseYear} />
-      {/* Poster + Backdrop */}
-      <MovieIMG movie={movie} setShowTrailer={setShowTrailer} trailer={trailer} showTrailer={showTrailer} />
-      {/* Genres + Homepage */}
+    <div className="mx-auto max-w-7xl rounded-4xl border border-light-100/10 bg-dark-100 p-6 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.85)] fade-in-up sm:p-10">
+      <MovieHeader
+        certification={certification}
+        movie={movie}
+        releaseYear={releaseYear}
+      />
+      <MovieIMG
+        movie={movie}
+        setShowTrailer={setShowTrailer}
+        trailer={trailer}
+        showTrailer={showTrailer}
+      />
       <MovieGenres movie={movie} genres={genres} />
-      {/* Details list */}
       <MovieDetailsList
         movie={movie}
         countries={countries}
@@ -33,8 +38,6 @@ const MovieInfo = ({
         companies={companies}
         InfoRow={InfoRow}
       />
-
-      {/* Actors */}
       {actors.length > 0 && (
         <MovieActors actors={actors} />
       )}

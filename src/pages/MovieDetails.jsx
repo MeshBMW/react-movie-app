@@ -110,5 +110,4 @@ function MovieDetails({ movieId: movieIdProp, onBack }) {
     </section>
   );
 }
-
 export default MovieDetails;
