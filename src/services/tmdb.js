@@ -1,5 +1,3 @@
-import {updateSearchCount} from "./appwrite.js";
-
 export const formatMoney = (n) => (n ? `$${(n / 1_000_000).toFixed(1)} million` : "N/A");
 export const formatRuntime = (m) => (m ? `${Math.floor(m / 60)}h ${m % 60}m` : "N/A");
 
@@ -47,5 +45,3 @@ export function getCertification(releaseDates) {
   const withCert = us?.release_dates?.find((rd) => rd.certification);
   return withCert?.certification || null;
 }
-
-// Строка "Label / value", как в макете: фиксированная колонка лейбла + значение

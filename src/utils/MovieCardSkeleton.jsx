@@ -3,7 +3,7 @@ import Skeleton from "./Skeleton.jsx";
 const MovieCardSkeleton = () => {
   return (
     <div className="movie-card">
-      <Skeleton className="w-full aspect-[2/3] rounded-lg" />
+      <Skeleton className="w-full aspect-2/3 rounded-lg" />
 
       <div className="mt-4">
         <Skeleton className="h-5 w-3/4 mb-2" />

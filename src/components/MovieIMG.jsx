@@ -1,6 +1,6 @@
-const MovieIMG = ({movie, showTrailer, trailer, setShowTrailer}) => {
+const MovieIMG = ({ movie, showTrailer, trailer, setShowTrailer }) => {
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
+    <div className="grid grid-cols-1 gap-3 sm:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
       <img
         className="h-full w-full rounded-xl object-cover"
         src={
