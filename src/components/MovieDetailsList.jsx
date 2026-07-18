@@ -1,6 +1,6 @@
-import {formatMoney} from "../services/tmdb.js";
+import { formatMoney } from "../services/tmdb.js";
 
-const MovieDetailsList = ({movie, InfoRow, countries, releaseYear, languages, companies}) => {
+const MovieDetailsList = ({ movie, InfoRow, countries, releaseYear, languages, companies }) => {
   return (
     <div className="mt-6 max-w-3xl space-y-3">
       {movie.overview && (

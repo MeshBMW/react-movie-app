@@ -1,17 +1,17 @@
 import MovieCard from "./MovieCard.jsx";
 import MovieCardSkeleton from "../utils/MovieCardSkeleton.jsx";
-import {useState} from "react";
+import { useState } from "react";
 
 function AllMovies({ isLoading, errorMessage, movieList, fetchMovies}) {
   const [page, setPage] = useState(1);
-  const noZero = page === 1 ? 1 : page - 1
+  const handlePagination = page === 1 ? 1 : page - 1
   const nextPage = () => {
     fetchMovies('', false, page + 1)
     setPage(page + 1)
   };
   const prevPage = () => {
-    fetchMovies('', false, noZero)
-    setPage(noZero);
+    fetchMovies('', false, handlePagination)
+    setPage(handlePagination);
   };
 
   return (

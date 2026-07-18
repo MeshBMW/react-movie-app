@@ -35,9 +35,9 @@ function HomePage() {
         : `${API_BASE_URL}/discover/movie?include_adult=false&page=${pageNum}&sort_by=popularity.desc`
 
       const latestMovie =
-        await fetch(`${API_BASE_URL}/discover/movie?include_adult=false&page=${pageNum}&sort_by=primary_release_date.desc`, API_OPTIONS)
+        await fetch(`${API_BASE_URL}/discover/movie?include_adult=false&page=${pageNum}&sort_by=primary_release_date.desc`, API_OPTIONS);
 
-      const response = isLatest ? latestMovie : await fetch(endpoint, API_OPTIONS)
+      const response = isLatest ? latestMovie : await fetch(endpoint, API_OPTIONS);
 
       const data = await response.json();
 

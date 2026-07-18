@@ -54,5 +54,4 @@ const MovieCard = ({ movie }) => {
     </Link>
   );
 };
-
 export default MovieCard;

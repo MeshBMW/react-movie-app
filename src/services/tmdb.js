@@ -16,15 +16,12 @@ export async function getMovieById(movieId) {
     `${API_BASE_URL}/movie/${movieId}?append_to_response=credits,videos,release_dates,similar`,
     API_OPTIONS
   );
-
   const data = await response.json();
   if (!response.ok) {
     throw new Error(data.status_message || "Failed to fetch movie details");
   }
-
   return data;
 }
-
 export function getTrailer(videos) {
   if (!videos?.results?.length) return null;
 
@@ -38,7 +35,6 @@ export function getTrailer(videos) {
 
   return trailer || fallback || null;
 }
-
 export function getCertification(releaseDates) {
   if (!releaseDates?.results?.length) return null;
   const us = releaseDates.results.find((r) => r.iso_3166_1 === "US");

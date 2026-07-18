@@ -1,4 +1,4 @@
-const MovieGenres = ({movie, genres}) => {
+const MovieGenres = ({ movie, genres }) => {
   return (
     <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
       <div className="flex flex-wrap gap-2">

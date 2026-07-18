@@ -1,4 +1,3 @@
-// hooks/useFavorites.js
 import { useEffect, useState } from "react";
 
 const STORAGE_KEY = "favorite-movies";

@@ -11,7 +11,8 @@ const InfoRow = ({ label, children }) => (
     <span className="shrink-0 text-sm text-gray-100 sm:w-36">{label}</span>
     <span className="text-sm text-light-100">{children}</span>
   </div>
-);
+)
+
 const MovieInfo = ({
   certification, movie, releaseYear, setShowTrailer, trailer, showTrailer,
   genres, actors, similarMovies ,languages, countries, companies
