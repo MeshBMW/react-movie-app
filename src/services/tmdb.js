@@ -13,7 +13,7 @@ const API_OPTIONS = {
 
 export async function getMovieById(movieId) {
   const response = await fetch(
-    `${API_BASE_URL}/movie/${movieId}?append_to_response=credits,videos,release_dates,similar`,
+    `${API_BASE_URL}/movie/${movieId}?include_adult=false&append_to_response=credits,videos,release_dates,similar`,
     API_OPTIONS
   );
   const data = await response.json();

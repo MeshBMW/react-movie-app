@@ -4,9 +4,6 @@ import { Link, useParams } from "react-router-dom";
 import { getMovieById, getTrailer, getCertification } from "../services/tmdb.js";
 import MovieInfo from "../components/MovieInfo.jsx";
 
-
-// movieId / onBack — опциональные пропсы для модалки.
-// Без них компонент сам берёт id из роута (/movies/:id) и рендерит Link вместо кнопки.
 function MovieDetails({ movieId: movieIdProp, onBack }) {
   const params = useParams();
   const movieId = movieIdProp ?? params.id;
