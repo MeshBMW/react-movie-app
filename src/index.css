@@ -144,7 +144,7 @@ html {
       @apply space-y-9;
 
       & ul {
-        @apply grid grid-cols-2 gap-5 xs:grid-cols-3 md:grid-cols-4 lg:grid-cols-5;
+        @apply grid grid-cols-2 gap-4 xs:grid-cols-3 md:grid-cols-4 lg:grid-cols-5;
       }
     & .sortBy-btn {
       @apply p-2 cursor-pointer bg-blue-950 rounded-[10px] shadow-2xl grow flex-wrap;
@@ -178,7 +178,7 @@ html {
     }
 
     & .rating p {
-      @apply font-bold text-base text-white;
+      @apply font-bold text-[14px] text-white;
     }
 
     & .content span {
@@ -186,11 +186,11 @@ html {
     }
 
     & .content .lang {
-      @apply capitalize text-gray-100 font-medium text-base;
+      @apply capitalize text-gray-100 font-medium text-[14px];
     }
 
     & .content .year {
-      @apply text-gray-100 font-medium text-base;
+      @apply text-gray-100 font-medium text-[14px];
     }
     & .content .overview {
       @apply font-medium text-gray-400;
