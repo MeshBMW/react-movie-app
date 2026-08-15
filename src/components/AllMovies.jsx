@@ -4,21 +4,21 @@ import { useState } from "react";
 
 function AllMovies({ isLoading, errorMessage, movieList, fetchMovies}) {
   const [page, setPage] = useState(1);
-  const handlePagination = page === 1 ? 1 : page - 1
+  const handleNav = page === 1 ? 1 : page - 1
   const nextPage = () => {
-    fetchMovies('', false, page + 1)
-    setPage(page + 1)
+    fetchMovies('', false, page + 1);
+    setPage(page + 1);
   };
   const prevPage = () => {
-    fetchMovies('', false, handlePagination)
-    setPage(handlePagination);
+    fetchMovies('', false, handleNav);
+    setPage(handleNav);
   };
 
   return (
     <section className="all-movies">
       <div>
         <div className='text-white text-3xl font-bold mb-2'>All Movies <button
-          className='text-white p-1 bg-blue-950 rounded-lg cursor-pointer '
+          className='text-white p-1 bg-blue-950 rounded-lg cursor-pointer'
           onClick={prevPage}
         >
           <img src='/prev.svg' alt=""/>

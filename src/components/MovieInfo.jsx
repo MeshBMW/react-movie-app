@@ -18,7 +18,9 @@ const MovieInfo = ({
   genres, actors, similarMovies ,languages, countries, companies
 }) => {
   return (
-    <div className="mx-auto max-w-7xl rounded-4xl border border-light-100/10 bg-dark-100 p-6 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.85)] fade-in-up sm:p-10">
+    <div className="mx-auto max-w-7xl rounded-4xl border border-light-100/10
+    bg-dark-100 p-6 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.85)] fade-in-up sm:p-10"
+    >
       <MovieHeader
         certification={certification}
         movie={movie}
@@ -45,11 +47,8 @@ const MovieInfo = ({
       <MovieRow title="Similar movies" movies={similarMovies} />
       <Link
         to="/"
-        className="rounded-lg
-          max-w-100
-          bg-blue-950
-          px-4 py-2 text-white mt-10
-          flex flex-row items-center justify-center"
+        className="rounded-lg max-w-100 bg-blue-95 px-4 py-2 text-white
+        mt-10 flex flex-row items-center justify-center"
       >
         ← Back to Movies
       </Link>

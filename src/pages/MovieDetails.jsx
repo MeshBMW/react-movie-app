@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import Spinner from "../components/Spinner.jsx";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getMovieById, getTrailer, getCertification } from "../services/tmdb.js";
 import MovieInfo from "../components/MovieInfo.jsx";
 
-function MovieDetails({ movieId: movieIdProp, onBack }) {
+function MovieDetails({ movieId: movieIdProp}) {
   const params = useParams();
   const movieId = movieIdProp ?? params.id;
 
@@ -29,36 +29,18 @@ function MovieDetails({ movieId: movieIdProp, onBack }) {
         setMovie(movieData);
       } catch (error) {
         console.log(`Error fetching movie details: ${error}`);
-        setErrorMessage("Failed to fetch movie details. Please try again later.");
+        setErrorMessage("Failed to load movie details. Please try again later.");
       } finally {
         setIsLoading(false);
       }
     };
 
     fetchMovie();
-  }, [movieId]);
-
-  const BackControl = () =>
-    onBack ? (
-      <button
-        className="cursor-pointer rounded-lg bg-blue-950 px-4 py-2 text-white"
-        onClick={onBack}
-      >
-        Back to movies
-      </button>
-    ) : (
-      <Link
-        to="/"
-        className="inline-block rounded-lg bg-blue-950 px-4 py-2 text-white"
-      >
-        ← Back to Movies
-      </Link>
-    );
+  }, [movieId])
 
   if (isLoading) {
     return (
       <section className="mt-10">
-        <BackControl />
         <div className="mt-6">
           <Spinner />
         </div>
@@ -69,7 +51,6 @@ function MovieDetails({ movieId: movieIdProp, onBack }) {
   if (errorMessage) {
     return (
       <section className="mt-10 space-y-6">
-        <BackControl />
         <p className="text-red-500">{errorMessage}</p>
       </section>
     );

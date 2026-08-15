@@ -5,9 +5,10 @@ const MovieGenres = ({ movie, genres }) => {
         {genres.map((g) => (
           <span
             key={g.id}
-            className="rounded-lg bg-primary px-3 py-1.5 text-sm text-light-200 shadow-inner shadow-light-100/10"
+            className="rounded-lg bg-primary px-3 py-1.5 text-sm text-light-200
+            shadow-inner shadow-light-100/10"
           >
-                {g.name}
+            {g.name}
               </span>
         ))}
       </div>

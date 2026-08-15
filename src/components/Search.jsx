@@ -1,5 +1,4 @@
 export function Search({searchTerm, setSearchTerm}) {
-
   return (
       <div className="search">
         <div>

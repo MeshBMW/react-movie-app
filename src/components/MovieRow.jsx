@@ -1,8 +1,5 @@
 import { Link } from "react-router-dom";
 
-// Переиспользуемая горизонтальная строка постеров.
-// Используется и для "Recommended for you", и для "Similar movies" —
-// разница только в заголовке и массиве фильмов, которые ей передают.
 function MovieRow({ title, movies }) {
   if (!movies || movies.length === 0) return null;
 
@@ -12,10 +9,11 @@ function MovieRow({ title, movies }) {
 
       <ul className="flex flex-row gap-4 overflow-x-auto hide-scrollbar">
         {movies.map((movie) => (
-          <li key={movie.id} className="w-[150px] shrink-0">
+          <li key={movie.id} className="w-37.5 shrink-0">
             <Link to={`/movies/${movie.id}`}>
               <img
-                className="aspect-[2/3] w-full rounded-lg object-cover transition-transform duration-300 ease-[cubic-bezier(.16,1,.3,1)] hover:scale-[1.04]"
+                className="aspect-[2/3] w-full rounded-lg object-cover transition-transform duration-300
+                  ease-[cubic-bezier(.16,1,.3,1)] hover:scale-[1.04]"
                 src={
                   movie.poster_path
                     ? `https://image.tmdb.org/t/p/w342/${movie.poster_path}`
@@ -36,5 +34,4 @@ function MovieRow({ title, movies }) {
     </div>
   );
 }
-
 export default MovieRow;

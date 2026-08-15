@@ -16,5 +16,4 @@ const MovieCardSkeleton = () => {
     </div>
   );
 };
-
 export default MovieCardSkeleton;

@@ -1,9 +1,9 @@
 export const formatMoney = (n) => (n ? `$${(n / 1_000_000).toFixed(1)} million` : "N/A");
 export const formatRuntime = (m) => (m ? `${Math.floor(m / 60)}h ${m % 60}m` : "N/A");
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
-const API_OPTIONS = {
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+export const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
+export const API_OPTIONS = {
   method: "GET",
   headers: {
     accept: "application/json",

@@ -35,7 +35,8 @@ const MovieIMG = ({ movie, showTrailer, trailer, setShowTrailer }) => {
         {trailer && !showTrailer && (
           <button
             onClick={() => setShowTrailer(true)}
-            className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-primary/70 px-4 py-2 text-sm text-white backdrop-blur-sm transition-colors hover:bg-primary/90"
+            className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-primary/70
+            px-4 py-2 text-sm text-white backdrop-blur-sm transition-colors hover:bg-primary/90"
           >
             ▶ Trailer
           </button>
@@ -45,7 +46,8 @@ const MovieIMG = ({ movie, showTrailer, trailer, setShowTrailer }) => {
           <button
             onClick={() => setShowTrailer(false)}
             aria-label="Close trailer"
-            className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-primary/70 text-white transition-colors hover:bg-primary/90"
+            className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full
+            bg-primary/70 text-white transition-colors  hover:bg-primary/90"
           >
             ✕
           </button>
