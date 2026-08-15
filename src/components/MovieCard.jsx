@@ -10,7 +10,6 @@ const MovieCard = ({ movie }) => {
   const handleClick = useRipple();
 
   const handleFavoriteClick = (e) => {
-    // без этих двух строк клик по сердцу всплывает на <Link> и уводит на страницу фильма
     e.preventDefault();
     e.stopPropagation();
     toggleFavorite(movie);
@@ -42,12 +41,11 @@ const MovieCard = ({ movie }) => {
               {release_date ? release_date.split("-")[0] : "N/A"}
             </p>
             <button
-              className="like-btn"
+              className="like-btn invisible"
               onClick={handleFavoriteClick}
               aria-label={favourite ? "Remove from favorites" : "Add to favorites"}
-            >
-              {favourite ? "❤️" : "💜"}
-            </button>
+              disabled={true}
+            ></button>
           </div>
         </div>
       </div>

@@ -4,7 +4,6 @@ import { getTrendingMovies, updateSearchCount } from "../services/appwrite.js";
 import { Analytics } from "@vercel/analytics/react"
 import Wrapper from "../components/Wrapper.jsx";
 import { API_BASE_URL, API_OPTIONS } from '../services/tmdb.js'
-import '../App.css'
 
 function HomePage() {
   const [searchTerm, setSearchTerm] = useState('')
