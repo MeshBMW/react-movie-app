@@ -31,21 +31,19 @@ function HomePage() {
 
       const data = await response.json();
 
-      if (!response.ok) {
-        throw new Error('Failed to fetch movies');
-      }
+      if (!response.ok) throw new Error('Failed to fetch movies');
+
       if(data.Response === 'False') {
         setErrorMessage(data.Error || 'Failed to fetch movies.')
         setMovieList([])
         return;
       }
-      setMovieList(data.results || [])
-      if(query && data.results.length > 0) {
-        await updateSearchCount(query, data.results[0]);
-      }
-      if(data.results.length === 0 && query.length > 0) {
-        setErrorMessage(`Not found: '${query}'`)
-      }
+      setMovieList(data.results || []);
+
+      if(query && data.results.length > 0) await updateSearchCount(query, data.results[0]);
+
+      if(data.results.length === 0 && query.length > 0) setErrorMessage(`Not found: '${query}'`);
+
     } catch (error) {
       console.log(`Error fetching movies: ${error}`);
       setErrorMessage('Failed to load movies. Please try again later.');

@@ -31,15 +31,13 @@ function AllMovies({ isLoading, errorMessage, movieList, fetchMovies}) {
             <img src='/next.svg' alt=""/>
           </button>
         </div>
-        <span> • </span>
-        <span className='text-white sortBy'>Sort by <span>
+        <span className='text-white sortBy'> Sort by <span>
             <button
               onClick={() => fetchMovies('', true)}
-              className='text-white sortBy-btn'
+              className='sortBy-btn'
             >
               Newest
             </button>
-          <span className='text-white'> • </span>
           <button
             onClick={() => fetchMovies('', false)}
             className='text-white sortBy-btn'
