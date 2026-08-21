@@ -1,6 +1,7 @@
-import { Navigate, Route, Routes as Router, useParams } from 'react-router-dom'
+import {Route, Routes as Router, useParams } from 'react-router-dom'
 import MovieDetails from './pages/MovieDetails.jsx'
 import HomePage from "./pages/HomePage.jsx";
+import ErrorPage from "./pages/ErrorPage.jsx";
 
 function MovieDetailsPage() {
   const { movieId } = useParams();
@@ -13,7 +14,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/movies" element={<HomePage />} />
         <Route path="/movies/:movieId" element={<MovieDetailsPage />} />
-        <Route path="*" element={<Navigate to="/movies" replace />} />
+        <Route path="*" element={<ErrorPage />} />
       </Router>
   )
 }

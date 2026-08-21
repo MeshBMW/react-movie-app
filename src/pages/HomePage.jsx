@@ -11,6 +11,7 @@ function HomePage() {
 
   const [isLoading, setIsLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
+  const [results, setResults] = useState('');
 
   const [movieList, setMovieList] = useState([])
   const [trendingMovies, setTrendingMovies] = useState([])
@@ -41,8 +42,8 @@ function HomePage() {
       setMovieList(data.results || []);
 
       if(query && data.results.length > 0) await updateSearchCount(query, data.results[0]);
-
       if(data.results.length === 0 && query.length > 0) setErrorMessage(`Not found: '${query}'`);
+      if(data.results.length > 0 && query.length > 0) setResults(`Search results ${query}`);
 
     } catch (error) {
       console.log(`Error fetching movies: ${error}`);
@@ -60,8 +61,7 @@ function HomePage() {
   const loadTrendingMovies = async () => {
     try {
       const movies = await getTrendingMovies();
-
-      setTrendingMovies(movies);
+      setTrendingMovies(movies || []);
     } catch (error) {
       console.log(`Error fetching trending movies: ${error}`);
     }
@@ -87,6 +87,7 @@ function HomePage() {
           movieList={movieList}
           trendingMovies={trendingMovies}
           fetchMovies={fetchMovies}
+          results={results}
         />
       </main>
     </>

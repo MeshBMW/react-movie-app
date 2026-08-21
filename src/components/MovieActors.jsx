@@ -1,12 +1,11 @@
 const MovieActors = ({ actors }) => {
   return (
-    <div className="mt-6">
-      <p className="mb-2 text-sm text-gray-100">Actors</p>
-      <ul className="flex flex-row gap-3 overflow-x-auto text-[0.8rem] hide-scrollbar">
+    <div className="movie-actors">
+      <p>Actors</p>
+      <ul>
         {actors.map((actor) => (
-          <li key={actor.id} className="w-27.5 shrink-0">
+          <li key={actor.id}>
             <img
-              className="aspect-2/3 w-full rounded-lg object-cover"
               src={
                 actor?.profile_path
                   ? `https://image.tmdb.org/t/p/w185/${actor.profile_path}`
@@ -14,7 +13,7 @@ const MovieActors = ({ actors }) => {
               }
               alt={actor.name}
             />
-            <p className="truncate text-light-200">{actor.name}</p>
+            <p>{actor.name}</p>
           </li>
         ))}
       </ul>

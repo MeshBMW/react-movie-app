@@ -17,17 +17,11 @@ function AllMovies({ isLoading, errorMessage, movieList, fetchMovies}) {
   return (
     <section className="all-movies">
       <div>
-        <div className='text-white text-3xl font-bold mb-2'>All Movies <button
-          className='text-white p-1 bg-blue-950 rounded-lg cursor-pointer'
-          onClick={prevPage}
-        >
+        <div className='paragraph'>All Movies <button className='arrow' onClick={prevPage}>
           <img src='/prev.svg' alt=""/>
         </button>
-          <span className='text-light-100 '> {page} </span>
-          <button
-            className='text-white p-1 bg-blue-950 rounded-lg cursor-pointer'
-            onClick={nextPage}
-          >
+          <span className='text-light-100'> {page} </span>
+          <button className='arrow' onClick={nextPage}>
             <img src='/next.svg' alt=""/>
           </button>
         </div>

@@ -1,6 +1,7 @@
 import { formatMoney } from "../services/tmdb.js";
+import { InfoRow } from "../utils/InfoRow.jsx";
 
-const MovieDetailsList = ({ movie, InfoRow, countries, releaseYear, languages, companies }) => {
+const MovieDetailsList = ({ movie, countries, releaseYear, languages, companies }) => {
   return (
     <div className="mt-6 max-w-3xl space-y-3">
       {movie.overview && (
