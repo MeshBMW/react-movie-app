@@ -9,7 +9,6 @@ function Wrapper({ searchTerm, setSearchTerm, isLoading, errorMessage, movieList
         <img src="/images/hero.png" alt="Hero Banner"/>
         <h1> Find <span className="text-gradient">Movies</span> You'll  Enjoy Without the Hassle</h1>
         <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-        <p className='text-white text-2xl flex items-center'>{results}</p>
       </header>
 
       <TrendingMovies trendingMovies={trendingMovies}/>
@@ -19,6 +18,7 @@ function Wrapper({ searchTerm, setSearchTerm, isLoading, errorMessage, movieList
         errorMessage={errorMessage}
         movieList={movieList}
         fetchMovies={fetchMovies}
+        results={results}
       />
     </div>
   )

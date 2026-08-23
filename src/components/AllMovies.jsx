@@ -2,7 +2,7 @@ import MovieCard from "./MovieCard.jsx";
 import MovieCardSkeleton from "../utils/MovieCardSkeleton.jsx";
 import { useState } from "react";
 
-function AllMovies({ isLoading, errorMessage, movieList, fetchMovies }) {
+function AllMovies({ isLoading, errorMessage, movieList, fetchMovies, results }) {
   const [page, setPage] = useState(1);
   const handleNav = page === 1 ? 1 : page - 1
   const handlePage = (arg) => {
@@ -38,6 +38,7 @@ function AllMovies({ isLoading, errorMessage, movieList, fetchMovies }) {
             Popular
           </button>
         </div>
+        <p className='text-white text-[16px] flex items-center'>{results}</p>
       </div>
       {isLoading ? (
         <ul>

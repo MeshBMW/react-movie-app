@@ -41,7 +41,8 @@ function HomePage() {
 
       if(query && data.results.length > 0) await updateSearchCount(query, data.results[0]);
       if(data.results.length === 0 && query.length > 0) setErrorMessage(`Not found: '${query}'`);
-      if(data.results.length > 0 && query.length > 0) setResults(`Search results ${query}`);
+      if(data.results.length > 0 && query) setResults(`Search results ${query}`);
+      if(data.results.length > 0 && query.length === 0) setResults('');
 
     } catch (error) {
       console.log(`Error fetching movies: ${error}`);
