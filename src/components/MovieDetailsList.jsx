@@ -4,9 +4,7 @@ import { InfoRow } from "../utils/InfoRow.jsx";
 const MovieDetailsList = ({ movie, countries, releaseYear, languages, companies }) => {
   return (
     <div className="mt-6 max-w-3xl space-y-3">
-      {movie.overview && (
-        <InfoRow label="Overview">{movie.overview}</InfoRow>
-      )}
+      {movie.overview && <InfoRow label="Overview">{movie.overview}</InfoRow>}
       <InfoRow label="Release date">{releaseYear || "N/A"}</InfoRow>
       <InfoRow label="Countries">{countries}</InfoRow>
       <InfoRow label="Status">{movie.status || "N/A"}</InfoRow>

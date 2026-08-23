@@ -5,11 +5,10 @@ const MovieMedia = ({ movie, showTrailer, trailer, setShowTrailer }) => {
     <div className="movie-media">
       <img
         className="movie-img"
-        src={
-          movie.poster_path
-            ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
-            : "/images/no-movie.png"
-        }
+        src={movie.poster_path
+          ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+          : "/images/no-movie.png"
+      }
         alt={movie.title}
       />
 

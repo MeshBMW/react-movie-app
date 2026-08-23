@@ -2,61 +2,57 @@ import MovieCard from "./MovieCard.jsx";
 import MovieCardSkeleton from "../utils/MovieCardSkeleton.jsx";
 import { useState } from "react";
 
-function AllMovies({ isLoading, errorMessage, movieList, fetchMovies}) {
+function AllMovies({ isLoading, errorMessage, movieList, fetchMovies }) {
   const [page, setPage] = useState(1);
   const handleNav = page === 1 ? 1 : page - 1
-  const nextPage = () => {
-    fetchMovies('', false, page + 1);
-    setPage(page + 1);
-  };
-  const prevPage = () => {
-    fetchMovies('', false, handleNav);
-    setPage(handleNav);
-  };
+  const handlePage = (arg) => {
+    if(arg === 'next') {
+      fetchMovies('', false, page + 1);
+      setPage(page + 1);
+    } else {
+      fetchMovies('', false, handleNav);
+      setPage(handleNav);
+    }
+  }
 
   return (
     <section className="all-movies">
       <div>
-        <div className='paragraph'>All Movies <button className='arrow' onClick={prevPage}>
-          <img src='/prev.svg' alt=""/>
-        </button>
-          <span className='text-light-100'> {page} </span>
-          <button className='arrow' onClick={nextPage}>
-            <img src='/next.svg' alt=""/>
+        <div className='paragraph'>
+          <h2>All Movies</h2>
+          <div>
+            <button className='arrow' onClick={() => handlePage('prev')}>
+              <img src='/prev.svg' alt=""/>
+            </button>
+            <span className='text-light-100'> {page} </span>
+            <button className='arrow' onClick={() => handlePage('next')}>
+              <img src='/next.svg' alt=""/>
+            </button>
+          </div>
+        </div>
+        <div>
+          <button onClick={() => fetchMovies('', true)} className='sortBy-btn'>
+            Newest
+          </button>
+          <button onClick={() => fetchMovies('', false)} className='sortBy-btn'>
+            Popular
           </button>
         </div>
-        <span className='text-white sortBy'> Sort by <span>
-            <button
-              onClick={() => fetchMovies('', true)}
-              className='sortBy-btn'
-            >
-              Newest
-            </button>
-          <button
-            onClick={() => fetchMovies('', false)}
-            className='text-white sortBy-btn'
-          >
-            Popular
-              </button>
-            </span>
-        </span>
-
       </div>
       {isLoading ? (
         <ul>
-          {Array.from({ length: 20 }).map((_, i) => (
+          {Array.from({ length: 12 }).map((_, i) => (
             <MovieCardSkeleton key={i} />
           ))}
         </ul>
       ) : errorMessage ? (
-        <p className="text-red-500">{errorMessage}</p>
+        <p className="text-red-500 flex items-center justify-center">{errorMessage}</p>
       ) : (
         <ul>
-          {movieList.map((movie, id) => (
+          {movieList.map((movie) => (
             <MovieCard
               key={movie.id}
               movie={movie}
-              style={{ animationDelay: `${Math.min(id * 60, 600)}ms` }}
             />
           ))}
         </ul>

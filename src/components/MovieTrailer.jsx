@@ -1,6 +1,6 @@
 const MovieTrailer = ({ movie, trailer, setShowTrailer, showTrailer }) => {
   return (
-    <div className="relative aspect-video overflow-hidden rounded-xl bg-primary">
+    <div className="movie-trailer">
       {showTrailer && trailer ? (
         <iframe
           className="absolute inset-0 h-full w-full"
@@ -16,16 +16,14 @@ const MovieTrailer = ({ movie, trailer, setShowTrailer, showTrailer }) => {
           alt={`${movie.title} backdrop`}
         />
       ) : (
-        <div className="absolute inset-0 flex items-center justify-center text-sm text-gray-100">
-          No backdrop available
-        </div>
+        <div className="no-backdrop">No backdrop available</div>
       )}
 
       {trailer && !showTrailer && (
         <button
           onClick={() => setShowTrailer(true)}
-          className="absolute bottom-4 left-4 flex items-center gap-2 rounded-full bg-primary/70
-            px-4 py-2 text-sm text-white backdrop-blur-sm transition-colors hover:bg-primary/90"
+          aria-label="Show trailer"
+          className="show-trailer-btn"
         >
           ▶ Trailer
         </button>
@@ -35,8 +33,7 @@ const MovieTrailer = ({ movie, trailer, setShowTrailer, showTrailer }) => {
         <button
           onClick={() => setShowTrailer(false)}
           aria-label="Close trailer"
-          className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full
-            bg-primary/70 text-white transition-colors  hover:bg-primary/90"
+          className="close-trailer-btn"
         >
           ✕
         </button>

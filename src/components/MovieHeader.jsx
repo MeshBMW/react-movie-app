@@ -18,7 +18,7 @@ const MovieHeader = ({movie, releaseYear, certification}) => {
               {movie.vote_average ? movie.vote_average.toFixed(1) : "N/A"}/10
             </span>
         <span className="text-xs text-gray-100">
-              ({movie.vote_count ? `${Math.round(movie.vote_count / 1000)}K` : "N/A"})
+          ({movie.vote_count && movie.vote_count > 999 ? `${Math.round(movie.vote_count / 1000)}K` : `${movie.vote_count}` || 'N/A' })
             </span>
       </div>
     </div>

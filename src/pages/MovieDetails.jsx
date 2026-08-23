@@ -63,8 +63,7 @@ function MovieDetails({ movieId: movieIdProp}) {
   const actors = movie.credits?.cast?.slice(0, 9) || [];
   const languages =
     movie.spoken_languages?.map((l) => l.english_name).join(" · ") ||
-    movie.original_language?.toUpperCase() ||
-    "N/A";
+    movie.original_language?.toUpperCase() || "N/A";
   const countries = movie.production_countries?.map((c) => c.name).join(" · ") || "N/A";
   const companies = movie.production_companies?.map((c) => c.name).join(" · ") || "N/A";
   const similarMovies = movie.similar?.results?.slice(0, 10) || [];

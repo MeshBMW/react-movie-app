@@ -3,12 +3,9 @@ const MovieGenres = ({ movie, genres }) => {
     <div className="movie-genres-list">
       <div>
         {genres.map((g) => (
-          <span
-            key={g.id}
-            className="genre-names"
-          >
+          <span key={g.id} className="genre-names">
             {g.name}
-              </span>
+          </span>
         ))}
       </div>
 

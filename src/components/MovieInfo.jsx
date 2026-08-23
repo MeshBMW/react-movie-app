@@ -6,14 +6,12 @@ import MovieDetailsList from "./MovieDetailsList.jsx";
 import MovieActors from "./MovieActors.jsx";
 import { Link } from "react-router-dom";
 
-
 const MovieInfo = ({
   certification, movie, releaseYear, setShowTrailer, trailer, showTrailer,
   genres, actors, similarMovies ,languages, countries, companies
 }) => {
   return (
-    <div className='movie-info'
-    >
+    <div className='movie-info'>
       <MovieHeader
         certification={certification}
         movie={movie}
@@ -33,14 +31,11 @@ const MovieInfo = ({
         languages={languages}
         companies={companies}
       />
-      {actors.length > 0 && (
-        <MovieActors actors={actors} />
-      )}
+
+      {actors.length > 0 && <MovieActors actors={actors} />}
       <MovieRow title="Similar movies" movies={similarMovies} />
-      <Link
-        to="/"
-        className="go-back-btn"
-      >
+
+      <Link to="/" className="go-back-btn">
         ← Back to Movies
       </Link>
     </div>

@@ -7,7 +7,7 @@ export function Search({searchTerm, setSearchTerm}) {
           <input
             className="text-white outline-none"
             type="text"
-            placeholder="Search through 1000's of movies"
+            placeholder="Search through millions of movies"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
           />

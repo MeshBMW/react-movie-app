@@ -6,15 +6,13 @@ function MovieRow({ title, movies }) {
   return (
     <div className="movie-row">
       <h2>{title}</h2>
-
       <ul>
         {movies.map((movie) => (
           <li key={movie.id}>
             <Link to={`/movies/${movie.id}`}>
               <img
                 className="similar-movies-img"
-                src={
-                  movie.poster_path
+                src={movie.poster_path
                     ? `https://image.tmdb.org/t/p/w342/${movie.poster_path}`
                     : "/images/no-movie.png"
                 }

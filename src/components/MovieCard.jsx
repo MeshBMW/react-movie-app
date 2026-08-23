@@ -19,8 +19,7 @@ const MovieCard = ({ movie }) => {
     <Link to={`/movies/${id}`}>
       <div className="movie-card" onClick={handleClick}>
         <img
-          src={
-            poster_path
+          src={poster_path
               ? `https://image.tmdb.org/t/p/w500/${poster_path}`
               : "/images/no-movie.png"
           }
@@ -37,9 +36,7 @@ const MovieCard = ({ movie }) => {
             <span>•</span>
             <p className="lang">{original_language}</p>
             <span>•</span>
-            <p className="year">
-              {release_date ? release_date.split("-")[0] : "N/A"}
-            </p>
+            <p className="year">{release_date ? release_date.split("-")[0] : "N/A"}</p>
             <button
               className="like-btn invisible"
               onClick={handleFavoriteClick}
