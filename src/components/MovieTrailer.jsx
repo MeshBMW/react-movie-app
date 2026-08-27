@@ -3,7 +3,7 @@ const MovieTrailer = ({ movie, trailer, setShowTrailer, showTrailer }) => {
     <div className="movie-trailer">
       {showTrailer && trailer ? (
         <iframe
-          className="absolute inset-0 h-full w-full"
+          className="trailer-backdrop"
           src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1`}
           title={trailer.name}
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -11,7 +11,7 @@ const MovieTrailer = ({ movie, trailer, setShowTrailer, showTrailer }) => {
         />
       ) : movie.backdrop_path ? (
         <img
-          className="absolute inset-0 h-full w-full object-cover"
+          className="trailer-backdrop object-cover"
           src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
           alt={`${movie.title} backdrop`}
         />

@@ -8,10 +8,10 @@ import { API_BASE_URL, API_OPTIONS } from '../services/tmdb.js'
 function HomePage() {
   const [searchTerm, setSearchTerm] = useState('')
   const [debouncedSearch, setDebouncedSearch] = useState('');
+  const [searchResults, setSearchResults] = useState('');
 
   const [isLoading, setIsLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
-  const [results, setResults] = useState('');
 
   const [movieList, setMovieList] = useState([])
   const [trendingMovies, setTrendingMovies] = useState([])
@@ -30,22 +30,22 @@ function HomePage() {
 
       const response = isLatest ? latestMovie : await fetch(endpoint, API_OPTIONS);
       const data = await response.json();
-      if (!response.ok) throw new Error('Failed to fetch movies');
 
+      if (!response.ok) throw new Error('-[HomePage]-Failed to fetch movies');
       if(data.Response === 'False') {
-        setErrorMessage(data.Error || 'Failed to fetch movies.')
-        setMovieList([])
+        setErrorMessage(data.Error || '-[HomePage]-Failed to fetch movies.');
+        setMovieList([]);
         return;
       }
       setMovieList(data.results || []);
 
       if(query && data.results.length > 0) await updateSearchCount(query, data.results[0]);
       if(data.results.length === 0 && query.length > 0) setErrorMessage(`Not found: '${query}'`);
-      if(data.results.length > 0 && query) setResults(`Search results ${query}`);
-      if(data.results.length > 0 && query.length === 0) setResults('');
+      if(data.results.length > 0 && query) setSearchResults(`Search results ${query}`);
+      if(data.results.length > 0 && query.length === 0) setSearchResults('');
 
     } catch (error) {
-      console.log(`Error fetching movies: ${error}`);
+      console.log(`-[HomePage]-Error fetching movies: ${error}`);
       setErrorMessage('Failed to load movies. Please try again later.');
     }
     finally {
@@ -53,25 +53,22 @@ function HomePage() {
     }
   }
 
-  useDebounce(() => {
-    setDebouncedSearch(searchTerm);
-  }, 600, [searchTerm]);
-
-  const loadTrendingMovies = async () => {
-    try {
-      const movies = await getTrendingMovies();
-      setTrendingMovies(movies || []);
-    } catch (error) {
-      console.log(`Error fetching trending movies: ${error}`);
+  useDebounce(() => {setDebouncedSearch(searchTerm)}, 600, [searchTerm]);
+  useEffect(() => {
+    const loadTrendingMovies = async () => {
+      try {
+        const movies = await getTrendingMovies();
+        setTrendingMovies(movies || []);
+      } catch (error) {
+        console.log(`-[HomePage]-Error fetching trending movies: ${error}`);
+      }
     }
-  }
-
+    loadTrendingMovies();
+  }, []);
   useEffect(() => {
     fetchMovies(debouncedSearch);
   }, [debouncedSearch]);
-  useEffect(() => {
-    loadTrendingMovies();
-  }, [])
+
 
   return (
     <>
@@ -86,7 +83,7 @@ function HomePage() {
           movieList={movieList}
           trendingMovies={trendingMovies}
           fetchMovies={fetchMovies}
-          results={results}
+          searchResults={searchResults}
         />
       </main>
     </>

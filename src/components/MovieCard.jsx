@@ -13,6 +13,7 @@ const MovieCard = ({ movie }) => {
     e.preventDefault();
     e.stopPropagation();
     toggleFavorite(movie);
+    // in development
   };
 
   return (
@@ -20,7 +21,7 @@ const MovieCard = ({ movie }) => {
       <div className="movie-card" onClick={handleClick}>
         <img
           src={poster_path
-              ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+              ? `https://image.tmdb.org/t/p/w400/${poster_path}`
               : "/images/no-movie.png"
           }
           alt={title}

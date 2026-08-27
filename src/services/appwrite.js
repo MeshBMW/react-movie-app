@@ -31,7 +31,7 @@ export const updateSearchCount = async (searchTerm, movie) => {
       })
     }
   } catch (error) {
-    console.error('Error updating search count:', error);
+    console.error('-[Appwrite]-Error updating search count:', error);
   }
 }
 
@@ -43,6 +43,6 @@ export const getTrendingMovies = async () => {
     ])
     return result.documents;
   } catch (error) {
-    console.error('Error fetching trending movies:', error);
+    console.error('-[Appwrite]-Error fetching trending movies:', error);
   }
 }

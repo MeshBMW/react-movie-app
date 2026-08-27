@@ -1,6 +1,6 @@
 import {formatRuntime} from "../services/tmdb.js";
 
-const MovieHeader = ({movie, releaseYear, certification}) => {
+const MovieHeader = ({ movie, releaseYear, certification }) => {
   return (
     <div className="movie-header">
       <div>

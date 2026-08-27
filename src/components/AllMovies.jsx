@@ -2,15 +2,15 @@ import MovieCard from "./MovieCard.jsx";
 import MovieCardSkeleton from "../utils/MovieCardSkeleton.jsx";
 import { useState } from "react";
 
-function AllMovies({ isLoading, errorMessage, movieList, fetchMovies, results }) {
+function AllMovies({ isLoading, errorMessage, movieList, fetchMovies, searchResults }) {
   const [page, setPage] = useState(1);
   const handleNav = page === 1 ? 1 : page - 1
-  const handlePage = (arg) => {
+  const handlePage = async (arg) => {
     if(arg === 'next') {
-      fetchMovies('', false, page + 1);
+      await fetchMovies('', false, page + 1);
       setPage(page + 1);
     } else {
-      fetchMovies('', false, handleNav);
+      await fetchMovies('', false, handleNav);
       setPage(handleNav);
     }
   }
@@ -32,13 +32,13 @@ function AllMovies({ isLoading, errorMessage, movieList, fetchMovies, results })
         </div>
         <div>
           <button onClick={() => fetchMovies('', true)} className='sortBy-btn'>
-            Newest
+            Not Released
           </button>
           <button onClick={() => fetchMovies('', false)} className='sortBy-btn'>
             Popular
           </button>
         </div>
-        <p className='text-white text-[16px] flex items-center'>{results}</p>
+        <p className='text-white text-[16px] flex-center'>{searchResults}</p>
       </div>
       {isLoading ? (
         <ul>
@@ -47,7 +47,7 @@ function AllMovies({ isLoading, errorMessage, movieList, fetchMovies, results })
           ))}
         </ul>
       ) : errorMessage ? (
-        <p className="text-red-500 flex items-center justify-center">{errorMessage}</p>
+        <p className="text-red-500 flex-c-c">{errorMessage}</p>
       ) : (
         <ul>
           {movieList.map((movie) => (

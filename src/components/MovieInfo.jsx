@@ -23,7 +23,10 @@ const MovieInfo = ({
         trailer={trailer}
         showTrailer={showTrailer}
       />
-      <MovieGenres movie={movie} genres={genres} />
+      <MovieGenres
+        movie={movie}
+        genres={genres}
+      />
       <MovieDetailsList
         movie={movie}
         countries={countries}
@@ -31,9 +34,15 @@ const MovieInfo = ({
         languages={languages}
         companies={companies}
       />
-
-      {actors.length > 0 && <MovieActors actors={actors} />}
-      <MovieRow title="Similar movies" movies={similarMovies} />
+      {actors.length > 0 &&
+        <MovieActors
+          actors={actors}
+        />
+      }
+      <MovieRow
+        title="Similar movies"
+        movies={similarMovies}
+      />
 
       <Link to="/" className="go-back-btn">
         ← Back to Movies

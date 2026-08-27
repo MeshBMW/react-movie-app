@@ -6,8 +6,7 @@ const MovieActors = ({ actors }) => {
         {actors.map((actor) => (
           <li key={actor.id}>
             <img
-              src={
-              actor?.profile_path
+              src={actor?.profile_path
                   ? `https://image.tmdb.org/t/p/w185/${actor.profile_path}`
                   : "/images/no-image.jpg"
               }

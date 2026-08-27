@@ -23,12 +23,11 @@ function MovieDetails({ movieId: movieIdProp}) {
       setIsLoading(true);
       setErrorMessage("");
       setShowTrailer(false);
-
       try {
         const movieData = await getMovieById(movieId);
         setMovie(movieData);
       } catch (error) {
-        console.log(`Error fetching movie details: ${error}`);
+        console.log(`-[MovieDetails]-Error fetching movie details: ${error}`);
         setErrorMessage("Failed to load movie details. Please try again later.");
       } finally {
         setIsLoading(false);

@@ -14,25 +14,16 @@ export const API_OPTIONS = {
 export async function getMovieById(movieId) {
   const response = await fetch(
     `${API_BASE_URL}/movie/${movieId}?include_adult=false&append_to_response=credits,videos,release_dates,similar`,
-    API_OPTIONS
-  );
+    API_OPTIONS);
   const data = await response.json();
-  if (!response.ok) {
-    throw new Error(data.status_message || "Failed to fetch movie details");
-  }
+  if (!response.ok) throw new Error(data.status_message || "-[TMDB]-Failed to fetch movie details");
   return data;
 }
 export function getTrailer(videos) {
   if (!videos?.results?.length) return null;
 
-  const trailer = videos.results.find(
-    (v) => v.site === "YouTube" && v.type === "Trailer" && v.official
-  );
-
-  const fallback = videos.results.find(
-    (v) => v.site === "YouTube" && (v.type === "Trailer" || v.type === "Teaser")
-  );
-
+  const trailer = videos.results.find((v) => v.site === "YouTube" && v.type === "Trailer" && v.official);
+  const fallback = videos.results.find((v) => v.site === "YouTube" && (v.type === "Trailer" || v.type === "Teaser"));
   return trailer || fallback || null;
 }
 export function getCertification(releaseDates) {
