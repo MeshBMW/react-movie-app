@@ -16,24 +16,24 @@ function HomePage() {
   const [movieList, setMovieList] = useState([])
   const [trendingMovies, setTrendingMovies] = useState([])
 
-  const fetchMovies = async (query='', isLatest, pageNum = 1) => {
+  const fetchMovies = async (query='', isLatest, page=1) => {
     query = query.trim().toLowerCase();
     setIsLoading(true);
     setErrorMessage('');
     try {
       const endpoint = query
         ? `${API_BASE_URL}/search/movie?include_adult=false&query=${encodeURIComponent(query)}`
-        : `${API_BASE_URL}/discover/movie?include_adult=false&page=${pageNum}&sort_by=popularity.desc`;
+        : `${API_BASE_URL}/discover/movie?include_adult=false&page=${page}&sort_by=popularity.desc`;
 
       const latestMovie =
-        await fetch(`${API_BASE_URL}/discover/movie?include_adult=false&page=${pageNum}&sort_by=primary_release_date.desc`, API_OPTIONS);
+        await fetch(`${API_BASE_URL}/discover/movie?include_adult=false&page=${page}&sort_by=primary_release_date.desc`, API_OPTIONS);
 
       const response = isLatest ? latestMovie : await fetch(endpoint, API_OPTIONS);
       const data = await response.json();
 
       if (!response.ok) throw new Error('-[HomePage]-Failed to fetch movies');
       if(data.Response === 'False') {
-        setErrorMessage(data.Error || '-[HomePage]-Failed to fetch movies.');
+        setErrorMessage(data.Error || 'Failed to load movies.');
         setMovieList([]);
         return;
       }
