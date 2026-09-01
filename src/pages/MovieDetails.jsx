@@ -69,6 +69,7 @@ function MovieDetails({ movieId: movieIdProp}) {
 
   return (
     <section className="mt-10 space-y-6">
+      <title>{movie.title || 'Trailer Finder'}</title>
       <MovieInfo
         releaseYear={releaseYear}
         movie={movie}
