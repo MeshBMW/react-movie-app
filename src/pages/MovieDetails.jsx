@@ -39,7 +39,7 @@ function MovieDetails({ movieId: movieIdProp}) {
 
   if (isLoading) {
     return (
-      <section className="mt-10">
+      <section className="mt-10 absolute inset-0 flex-c-c">
         <div className="mt-6">
           <Spinner />
         </div>
