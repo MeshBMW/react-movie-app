@@ -265,7 +265,7 @@ html {
         @apply rounded-lg bg-primary px-3 py-1.5 text-sm text-light-200
         shadow-inner shadow-light-100/10;
       }
-      & div a {
+      & a {
         @apply rounded-lg bg-blue-950 px-4 py-2 text-sm text-white;
       }
     }
