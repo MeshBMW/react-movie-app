@@ -1,4 +1,4 @@
-# 🎬 Movie Discovery App
+# 🎬 Trailer Finder
 
 Trailer Finder — React-приложение для поиска и просмотра фильмов через TMDB API с системой популярных запросов, построенной на Appwrite.
 ## Скриншоты 
