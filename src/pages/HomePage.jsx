@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useDebounce } from "react-use";
 import { getTrendingMovies, updateSearchCount } from "../services/appwrite.js";
 import { Analytics } from "@vercel/analytics/react"
@@ -9,6 +9,7 @@ function HomePage() {
   const [searchTerm, setSearchTerm] = useState('')
   const [debouncedSearch, setDebouncedSearch] = useState('');
   const [searchResults, setSearchResults] = useState('');
+  const inputRef = useRef();
 
   const [isLoading, setIsLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
@@ -63,6 +64,7 @@ function HomePage() {
         console.log(`-[HomePage]-Error fetching trending movies: ${error}`);
       }
     }
+    inputRef.current.focus();
     loadTrendingMovies();
   }, []);
   useEffect(() => {
@@ -84,6 +86,7 @@ function HomePage() {
           trendingMovies={trendingMovies}
           fetchMovies={fetchMovies}
           searchResults={searchResults}
+          inputRef={inputRef}
         />
       </main>
     </>

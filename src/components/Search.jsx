@@ -1,4 +1,4 @@
-export function Search({searchTerm, setSearchTerm}) {
+export function Search({ searchTerm, setSearchTerm, inputRef }) {
   return (
       <div className="search">
         <div>
@@ -10,6 +10,7 @@ export function Search({searchTerm, setSearchTerm}) {
             placeholder="Search through millions of movies"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            ref={inputRef}
           />
         </div>
       </div>

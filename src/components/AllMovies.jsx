@@ -42,7 +42,7 @@ function AllMovies({ isLoading, errorMessage, movieList, fetchMovies, searchResu
       </div>
       {isLoading ? (
         <ul>
-          {Array.from({ length: 12 }).map((_, i) => (
+          {Array.from({ length: 16 }).map((_, i) => (
             <MovieCardSkeleton key={i} />
           ))}
         </ul>
