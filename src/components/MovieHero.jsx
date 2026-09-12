@@ -64,7 +64,7 @@ const MovieHero = ({ movie, mediaType, releaseYear, certification, genres,
             </button>
           </div>
 
-          {movie.overview && <p className="movie-hero-overview">{movie.overview}</p>}
+          {movie.overview && <p className="movie-hero-overview">{movie.tagline}</p>}
           {directors.length > 0 && (
             <p className="movie-hero-directors">Directed by {directors.join(", ")}</p>
           )}

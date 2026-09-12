@@ -6,6 +6,7 @@ const MovieDetailsList = ({ movie, mediaType, countries, releaseYear, languages,
   return (
     <div className="mt-2 max-w-3xl space-y-3">
       <InfoRow label="Status">{movie.status || "N/A"}</InfoRow>
+      <InfoRow label="Overview">{movie.overview}</InfoRow>
       <InfoRow label={isTV ? "First aired" : "Release date"}>{releaseYear || "N/A"}</InfoRow>
       <InfoRow label="Countries">{countries}</InfoRow>
       <InfoRow label="Language">{languages}</InfoRow>
