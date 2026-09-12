@@ -238,12 +238,11 @@ html {
             @apply relative w-full h-[50vh] sm:h-[65vh] min-h-[340px] overflow-hidden bg-primary;
 
             & .movie-hero-actions {
-                @apply mt-1 flex flex-wrap items-center gap-3;
+                @apply flex flex-wrap items-center gap-3;
             }
             & .show-trailer-btn-hero {
                 @apply flex items-center gap-2 rounded-full bg-white text-primary
                 px-5 py-2.5 text-sm sm:text-base font-bold transition-colors hover:bg-light-100;
-                /* убрал mt-5 отсюда — теперь отступ на родителе .movie-hero-actions */
             }
             & .watchlist-btn-hero {
                 @apply flex items-center gap-2 rounded-full border border-light-100/40 bg-primary/40 text-white
@@ -251,7 +250,7 @@ html {
                 hover:bg-primary/60 disabled:cursor-not-allowed disabled:opacity-70;
             }
             & .movie-hero-overview {
-                @apply mt-1 text-sm sm:text-base text-gray-200 max-w-2xl;
+                @apply mt-1 text-[12px] sm:text-base text-gray-200 max-w-2xl;
             }
             & .movie-hero-directors {
                 @apply mt-1 text-xs sm:text-sm text-gray-100;
@@ -270,7 +269,7 @@ html {
             @apply absolute inset-x-0 bottom-0 z-10 px-4 sm:px-6 pb-6 sm:pb-4 max-w-3xl;
 
             & h1 {
-                @apply text-left mx-0 max-w-none text-3xl sm:text-5xl leading-tight text-white;
+                @apply text-left mx-0 max-w-none text-2xl sm:text-5xl leading-tight text-white;
             }
         }
         & .movie-hero-meta {
