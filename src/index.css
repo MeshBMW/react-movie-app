@@ -231,7 +231,7 @@ html {
         }
 
         & .movie-info-body {
-            @apply mx-auto px-4 sm:px-8 pt-8 pb-10 space-y-6;
+            @apply mx-auto px-2 sm:px-5 pb-5 space-y-6;
         }
 
         & .movie-hero {
@@ -253,7 +253,7 @@ html {
                 @apply mt-1 text-[12px] sm:text-base text-gray-200 max-w-2xl;
             }
             & .movie-hero-directors {
-                @apply mt-1 text-xs sm:text-sm text-gray-100;
+                @apply text-[14px] sm:text-[12px] text-gray-100;
             }
         }
         & .movie-hero-media {
@@ -273,7 +273,7 @@ html {
             }
         }
         & .movie-hero-meta {
-            @apply mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm sm:text-base text-gray-200;
+            @apply mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm sm:text-[14px] text-gray-200;
 
             & .cert-badge {
                 @apply rounded border border-light-100/40 px-1.5 py-0.5 text-xs font-bold text-white;

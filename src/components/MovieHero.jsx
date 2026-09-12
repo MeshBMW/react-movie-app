@@ -43,11 +43,11 @@ const MovieHero = ({ movie, mediaType, releaseYear, certification, genres,
             {releaseYear && <span>{releaseYear.split("-")[0]}</span>}
             {runtimeMinutes ? <span>{formatRuntime(runtimeMinutes)}</span> : null}
             {genreNames && <span>{genreNames}</span>}
+            <div className="movie-hero-rating">
+              <span className="text-amber-400">★</span>
+              <span>{movie.vote_average ? movie.vote_average.toFixed(1) : "N/A"}/10</span>
+            </div>
           </p>
-          <div className="movie-hero-rating">
-            <span className="text-amber-400">★</span>
-            <span>{movie.vote_average ? movie.vote_average.toFixed(1) : "N/A"}/10</span>
-          </div>
 
           <div className="movie-hero-actions">
             {trailer && (
