@@ -71,7 +71,6 @@ function MovieDetails({ mediaType: mediaTypeProp, mediaId: mediaIdProp }) {
     || movie.origin_country?.join(" · ") || "N/A";
   const companies = movie.production_companies?.map((c) => c.name).join(" · ") || "N/A";
   const similarMovies = movie.similar?.results?.slice(0, 10) || [];
-  // добавить рядом с остальными const после `if (!movie) return null;`
   const directors = movie.credits?.crew?.filter((c) => c.job === "Director").map((d) => d.name) || [];
 
   return (

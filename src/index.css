@@ -238,7 +238,7 @@ html {
             @apply relative w-full h-[50vh] sm:h-[65vh] min-h-[340px] overflow-hidden bg-primary;
 
             & .movie-hero-actions {
-                @apply mt-5 flex flex-wrap items-center gap-3;
+                @apply mt-1 flex flex-wrap items-center gap-3;
             }
             & .show-trailer-btn-hero {
                 @apply flex items-center gap-2 rounded-full bg-white text-primary
@@ -251,10 +251,10 @@ html {
                 hover:bg-primary/60 disabled:cursor-not-allowed disabled:opacity-70;
             }
             & .movie-hero-overview {
-                @apply mt-4 text-sm sm:text-base text-gray-200 max-w-2xl;
+                @apply mt-1 text-sm sm:text-base text-gray-200 max-w-2xl;
             }
             & .movie-hero-directors {
-                @apply mt-2 text-xs sm:text-sm text-gray-100;
+                @apply mt-1 text-xs sm:text-sm text-gray-100;
             }
         }
         & .movie-hero-media {
@@ -274,14 +274,14 @@ html {
             }
         }
         & .movie-hero-meta {
-            @apply mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm sm:text-base text-gray-200;
+            @apply mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm sm:text-base text-gray-200;
 
             & .cert-badge {
                 @apply rounded border border-light-100/40 px-1.5 py-0.5 text-xs font-bold text-white;
             }
         }
         & .movie-hero-rating {
-            @apply mt-2 flex items-center gap-1.5 text-sm sm:text-base font-bold text-white;
+            @apply mt-1 flex items-center gap-1 text-sm sm:text-base font-bold text-white;
         }
         & .show-trailer-btn-hero {
             @apply mt-5 flex items-center gap-2 rounded-full bg-white text-primary
@@ -299,7 +299,7 @@ html {
                 @apply mb-2 text-sm text-gray-100;
             }
             & ul {
-                @apply flex flex-row gap-3 overflow-x-auto text-[0.8rem] hide-scrollbar;
+                @apply flex flex-row gap-5 overflow-x-auto text-[0.8rem] hide-scrollbar;
             }
             & ul li {
                 @apply w-27.5 shrink-0;
