@@ -5,9 +5,9 @@ import MovieActors from "./MovieActors.jsx";
 import { Link } from "react-router-dom";
 
 const MovieInfo = ({
-                     mediaType, certification, movie, releaseYear, setShowTrailer, trailer, showTrailer,
-                     genres, actors, similarMovies, languages, countries, companies
-                   }) => {
+  mediaType, certification, movie, releaseYear, setShowTrailer, trailer, showTrailer,
+  genres, actors, similarMovies, languages, countries, companies
+}) => {
   return (
     <div className='movie-info'>
       <MovieHero
