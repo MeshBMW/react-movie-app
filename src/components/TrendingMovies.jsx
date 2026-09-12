@@ -10,7 +10,7 @@ const TrendingMovies = ({ trendingMovies }) => {
             {trendingMovies.map((movie, i) => (
               <li key={movie.$id}>
                 <p>{i+1}</p>
-                <Link to={`/movies/${movie.movie_id}`}>
+                <Link to={`/movie/${movie.movie_id}`}>
                   <img src={movie.poster_url} alt={movie.title}/>
                 </Link>
               </li>

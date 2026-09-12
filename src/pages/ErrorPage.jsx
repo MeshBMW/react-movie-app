@@ -7,7 +7,7 @@ const ErrorPage = () => {
       <h2>404</h2>
       <p>Page not found.</p>
     </div>
-      <Link to={'/movies'} className='text-white underline mt-4 flex items-center justify-center'>
+      <Link to={'/'} className='text-white underline mt-4 flex items-center justify-center'>
         Home
       </Link>
     </>

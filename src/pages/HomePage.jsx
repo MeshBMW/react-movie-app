@@ -3,74 +3,92 @@ import { useDebounce } from "react-use";
 import { getTrendingMovies, updateSearchCount } from "../services/appwrite.js";
 import { Analytics } from "@vercel/analytics/react"
 import Wrapper from "../components/Wrapper.jsx";
-import { API_BASE_URL, API_OPTIONS } from '../services/tmdb.js'
+import { discoverMedia, getTrendingAll, searchMulti } from '../services/tmdb.js'
 
 function HomePage() {
   const [searchTerm, setSearchTerm] = useState('')
   const [debouncedSearch, setDebouncedSearch] = useState('');
-  const [searchResults, setSearchResults] = useState('');
   const inputRef = useRef();
 
   const [isLoading, setIsLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
 
-  const [movieList, setMovieList] = useState([])
-  const [trendingMovies, setTrendingMovies] = useState([])
+  const [trendingAll, setTrendingAll] = useState([]);
+  const [popularMovies, setPopularMovies] = useState([]);
+  const [popularTV, setPopularTV] = useState([]);
+  const [trendingSearches, setTrendingSearches] = useState([]);
 
-  const fetchMovies = async (query='', isLatest, page=1) => {
-    query = query.trim().toLowerCase();
+  const [searchResultsList, setSearchResultsList] = useState([]);
+  const [isSearching, setIsSearching] = useState(false);
+
+  const loadHome = async () => {
     setIsLoading(true);
     setErrorMessage('');
     try {
-      const endpoint = query
-        ? `${API_BASE_URL}/search/movie?include_adult=false&query=${encodeURIComponent(query)}`
-        : `${API_BASE_URL}/discover/movie?include_adult=false&page=${page}&sort_by=popularity.desc`;
-
-      const latestMovie =
-        await fetch(`${API_BASE_URL}/discover/movie?include_adult=false&page=${page}&sort_by=primary_release_date.desc`, API_OPTIONS);
-
-      const response = isLatest ? latestMovie : await fetch(endpoint, API_OPTIONS);
-      const data = await response.json();
-
-      if (!response.ok) throw new Error('-[HomePage]-Failed to fetch movies');
-      if(data.Response === 'False') {
-        setErrorMessage(data.Error || 'Failed to load movies.');
-        setMovieList([]);
-        return;
-      }
-      setMovieList(data.results || []);
-
-      if(query && data.results.length > 0) await updateSearchCount(query, data.results[0]);
-      if(data.results.length === 0 && query.length > 0) setErrorMessage(`Not found: '${query}'`);
-      if(data.results.length > 0 && query) setSearchResults(`Search results ${query}`);
-      if(data.results.length > 0 && query.length === 0) setSearchResults('');
-
+      const [trendingData, moviesData, tvData] = await Promise.all([
+        getTrendingAll(),
+        discoverMedia('movie', { sortBy: 'popularity.desc' }),
+        discoverMedia('tv', { sortBy: 'popularity.desc' }),
+      ]);
+      setTrendingAll((trendingData.results || []).filter((item) => item.media_type !== 'person'));
+      setPopularMovies(moviesData.results || []);
+      setPopularTV(tvData.results || []);
     } catch (error) {
-      console.log(`-[HomePage]-Error fetching movies: ${error}`);
-      setErrorMessage('Failed to load movies. Please try again later.');
-    }
-    finally {
+      console.log('-[HomePage]-Error loading home sections:', error);
+      setErrorMessage('Failed to load. Please try again later.');
+    } finally {
       setIsLoading(false);
     }
   }
 
-  useDebounce(() => {setDebouncedSearch(searchTerm)}, 600, [searchTerm]);
+  const runSearch = async (query) => {
+    setIsSearching(true);
+    setErrorMessage('');
+    try {
+      const data = await searchMulti(query);
+      const results = (data.results || []).filter((item) => item.media_type !== 'person');
+
+      if (results.length === 0) {
+        setErrorMessage(`Not found: '${query}'`);
+      }
+      setSearchResultsList(results);
+
+      if (results.length > 0) await updateSearchCount(query, results[0], results[0].media_type);
+    } catch (error) {
+      console.log('-[HomePage]-Error searching:', error);
+      setErrorMessage('Failed to search. Please try again later.');
+    } finally {
+      setIsSearching(false);
+    }
+  }
+
+  useDebounce(() => { setDebouncedSearch(searchTerm) }, 600, [searchTerm]);
+
   useEffect(() => {
-    const loadTrendingMovies = async () => {
+    const loadTrendingSearches = async () => {
       try {
         const movies = await getTrendingMovies();
-        setTrendingMovies(movies || []);
+        setTrendingSearches(movies || []);
       } catch (error) {
-        console.log(`-[HomePage]-Error fetching trending movies: ${error}`);
+        console.log('-[HomePage]-Error fetching trending searches:', error);
       }
     }
     inputRef.current.focus();
-    loadTrendingMovies();
+    loadTrendingSearches();
+    loadHome();
   }, []);
+
   useEffect(() => {
-    fetchMovies(debouncedSearch);
+    const query = debouncedSearch.trim();
+    if (!query) {
+      setSearchResultsList([]);
+      setErrorMessage('');
+      return;
+    }
+    runSearch(query);
   }, [debouncedSearch]);
 
+  const isSearchMode = debouncedSearch.trim().length > 0;
 
   return (
     <>
@@ -82,10 +100,13 @@ function HomePage() {
           setSearchTerm={setSearchTerm}
           isLoading={isLoading}
           errorMessage={errorMessage}
-          movieList={movieList}
-          trendingMovies={trendingMovies}
-          fetchMovies={fetchMovies}
-          searchResults={searchResults}
+          isSearchMode={isSearchMode}
+          isSearching={isSearching}
+          searchResultsList={searchResultsList}
+          trendingAll={trendingAll}
+          popularMovies={popularMovies}
+          popularTV={popularTV}
+          trendingSearches={trendingSearches}
           inputRef={inputRef}
         />
       </main>

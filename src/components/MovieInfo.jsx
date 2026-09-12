@@ -1,52 +1,36 @@
-import MovieHeader from "./MovieHeader.jsx";
-import MovieMedia from "./MovieMedia.jsx";
-import MovieRow from "./MovieRow.jsx";
-import MovieGenres from "./MovieGenres.jsx";
+import MovieHero from "./MovieHero.jsx";
+import MediaRow from "./MediaRow.jsx";
 import MovieDetailsList from "./MovieDetailsList.jsx";
 import MovieActors from "./MovieActors.jsx";
 import { Link } from "react-router-dom";
 
 const MovieInfo = ({
-  certification, movie, releaseYear, setShowTrailer, trailer, showTrailer,
-  genres, actors, similarMovies ,languages, countries, companies
-}) => {
+                     mediaType, certification, movie, releaseYear, setShowTrailer, trailer, showTrailer,
+                     genres, actors, similarMovies, languages, countries, companies
+                   }) => {
   return (
     <div className='movie-info'>
-      <MovieHeader
-        certification={certification}
+      <MovieHero
         movie={movie}
+        mediaType={mediaType}
         releaseYear={releaseYear}
-      />
-      <MovieMedia
-        movie={movie}
-        setShowTrailer={setShowTrailer}
+        certification={certification}
+        genres={genres}
         trailer={trailer}
         showTrailer={showTrailer}
-      />
-      <MovieGenres
-        movie={movie}
-        genres={genres}
-      />
-      <MovieDetailsList
-        movie={movie}
-        countries={countries}
-        releaseYear={releaseYear}
-        languages={languages}
-        companies={companies}
-      />
-      {actors.length > 0 &&
-        <MovieActors
-          actors={actors}
-        />
-      }
-      <MovieRow
-        title="Similar movies"
-        movies={similarMovies}
+        setShowTrailer={setShowTrailer}
       />
 
-      <Link to="/" className="go-back-btn">
-        ← Back to Movies
-      </Link>
+      <div className="movie-info-body">
+        <MovieDetailsList movie={movie} mediaType={mediaType} countries={countries} releaseYear={releaseYear} languages={languages} companies={companies} />
+        {actors.length > 0 && <MovieActors actors={actors} />}
+        <MediaRow
+          title={mediaType === 'tv' ? "Similar shows" : "Similar movies"}
+          items={similarMovies}
+          mediaType={mediaType}
+        />
+        <Link to="/" className="go-back-btn">← Back to Home</Link>
+      </div>
     </div>
   )
 }

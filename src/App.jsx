@@ -1,21 +1,16 @@
-import {Route, Routes as Router, useParams } from 'react-router-dom'
+import { Route, Routes as Router } from 'react-router-dom'
 import MovieDetails from './pages/MovieDetails.jsx'
 import HomePage from "./pages/HomePage.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
 
-function MovieDetailsPage() {
-  const { movieId } = useParams();
-  return <MovieDetails movieId={movieId} />;
-}
-
 function App() {
   return (
-      <Router>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/movies" element={<HomePage />} />
-        <Route path="/movies/:movieId" element={<MovieDetailsPage />} />
-        <Route path="*" element={<ErrorPage />} />
-      </Router>
+    <Router>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/movie/:id" element={<MovieDetails mediaType="movie" />} />
+      <Route path="/tv/:id" element={<MovieDetails mediaType="tv" />} />
+      <Route path="*" element={<ErrorPage />} />
+    </Router>
   )
 }
 export default App
