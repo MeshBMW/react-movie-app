@@ -24,7 +24,7 @@ function MediaGrid({ title, items, mediaType, isLoading, errorMessage }) {
           {Array.from({ length: 10 }).map((_, i) => <MovieCardSkeleton key={i} />)}
         </ul>
       ) : errorMessage ? (
-        <p className="text-red-500 flex-c-c">{errorMessage}</p>
+        <p className="text-red-500">{errorMessage}</p>
       ) : (
         <ul ref={scrollRef} onWheel={handleWheel}>
           {items.map((item) => (

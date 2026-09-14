@@ -9,7 +9,6 @@ const MovieDetailsList = ({ movie, mediaType, countries, releaseYear, languages,
       <InfoRow label={isTV ? "First aired" : "Release date"}>{releaseYear || "N/A"}</InfoRow>
       <InfoRow label="Countries">{countries}</InfoRow>
       <InfoRow label="Language">{languages}</InfoRow>
-      <InfoRow label="Overview">{movie.overview}</InfoRow>
       {isTV ? (
         <>
           <InfoRow label="Seasons">{movie.number_of_seasons ?? "N/A"}</InfoRow>

@@ -197,7 +197,7 @@ html {
         }
 
         & h3 {
-            @apply text-white font-bold text-base sm:text-[0.8rem] line-clamp-1 mt-0.5;
+            @apply text-white font-bold text-base sm:text-[0.8rem] line-clamp-2 mt-0.5;
         }
 
         & .content {
@@ -304,7 +304,7 @@ html {
                 @apply w-27.5 shrink-0;
             }
             & ul li img {
-                @apply aspect-2/3 w-full rounded-full object-cover;
+                @apply aspect-1/1 w-full rounded-full object-cover;
             }
             & ul li p {
                 @apply truncate text-light-200;
