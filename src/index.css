@@ -197,7 +197,7 @@ html {
         }
 
         & h3 {
-            @apply text-white font-bold text-base sm:text-[0.8rem] line-clamp-2 mt-0.5;
+            @apply text-white font-bold text-[0.8rem] line-clamp-1 mt-0.5;
         }
 
         & .content {
@@ -235,7 +235,7 @@ html {
         }
 
         & .movie-hero {
-            @apply relative w-full h-[50vh] sm:h-[65vh] overflow-hidden bg-primary;
+            @apply relative w-full h-[58vh] sm:h-[65vh] overflow-hidden bg-primary line-clamp-2;
 
             & .movie-hero-actions {
                 @apply flex flex-wrap items-center gap-3;
@@ -250,7 +250,7 @@ html {
                 hover:bg-primary/60 disabled:cursor-not-allowed disabled:opacity-70;
             }
             & .movie-hero-overview {
-                @apply mt-1 text-[12px] sm:text-base text-gray-200 max-w-2xl;
+                @apply mt-1 text-[12px] sm:text-base text-gray-200 max-w-2xl line-clamp-3;
             }
             & .movie-hero-directors {
                 @apply text-[14px] sm:text-[12px] text-gray-100;

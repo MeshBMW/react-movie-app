@@ -1,4 +1,4 @@
-import { formatRuntime } from "../services/tmdb.js";
+import {formatMoney, formatRuntime} from "../services/tmdb.js";
 
 const MovieHeader = ({ movie, mediaType, releaseYear, certification }) => {
   const displayTitle = movie.title ?? movie.name;
@@ -18,6 +18,7 @@ const MovieHeader = ({ movie, mediaType, releaseYear, certification }) => {
         <span className="text-amber-400">★</span>
         <span className="text-sm font-bold text-white">
           {movie.vote_average ? movie.vote_average.toFixed(1) : "N/A"}/10
+          ({movie.vote_count ? formatMoney(movie.vote_count) : 'N/A'})
         </span>
         <span className="text-xs text-gray-100">
           ({movie.vote_count && movie.vote_count > 999 ? `${Math.round(movie.vote_count / 1000)}K` : `${movie.vote_count}` || 'N/A'})
