@@ -1,22 +1,43 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import MediaCard from "./MediaCard.jsx";
 import MovieCardSkeleton from "../utils/MovieCardSkeleton.jsx";
 
-function MediaGrid({ title, items, mediaType, isLoading, errorMessage }) {
+function MediaGrid({ title, items, mediaType, exploreType, isLoading, errorMessage }) {
   const scrollRef = useRef(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(false);
 
-  const handleWheel = (e) => {
-    if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
-    e.preventDefault();
-    scrollRef.current?.scrollBy({ left: e.deltaY * 2, behavior: "auto" });
+  const updateScrollButtons = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    setCanScrollLeft(el.scrollLeft > 4);
+    setCanScrollRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
   };
+
+  // Recheck whenever the row's content changes (new items loaded) or the window resizes
+  useEffect(() => {
+    updateScrollButtons();
+    window.addEventListener("resize", updateScrollButtons);
+    return () => window.removeEventListener("resize", updateScrollButtons);
+  }, [items]);
+
+  const scrollByPage = (direction) => {
+    const el = scrollRef.current;
+    if (!el) return;
+    el.scrollBy({ left: el.clientWidth * 0.8 * direction, behavior: "smooth" });
+  };
+
+  const heading = (
+    <h2>
+      {title} <span className="chevron">›</span>
+    </h2>
+  );
 
   return (
     <section className="all-movies">
       <div className='paragraph'>
-        <h2>
-          {title} <span className="chevron">›</span>
-        </h2>
+        {exploreType ? <Link to={`/explore/${exploreType}`}>{heading}</Link> : heading}
       </div>
 
       {isLoading ? (
@@ -24,17 +45,41 @@ function MediaGrid({ title, items, mediaType, isLoading, errorMessage }) {
           {Array.from({ length: 10 }).map((_, i) => <MovieCardSkeleton key={i} />)}
         </ul>
       ) : errorMessage ? (
-        <p className="text-red-500">{errorMessage}</p>
+        <p className="text-red-500 flex-c-c">{errorMessage}</p>
       ) : (
-        <ul ref={scrollRef} onWheel={handleWheel}>
-          {items.map((item) => (
-            <MediaCard
-              key={item.id}
-              media={item}
-              mediaType={mediaType ?? item.media_type}
-            />
-          ))}
-        </ul>
+        <div className="scroll-row">
+          {canScrollLeft && (
+            <button
+              type="button"
+              className="scroll-arrow scroll-arrow-left"
+              onClick={() => scrollByPage(-1)}
+              aria-label="Scroll left"
+            >
+              ‹
+            </button>
+          )}
+
+          <ul ref={scrollRef} onScroll={updateScrollButtons}>
+            {items.map((item) => (
+              <MediaCard
+                key={item.id}
+                media={item}
+                mediaType={mediaType ?? item.media_type}
+              />
+            ))}
+          </ul>
+
+          {canScrollRight && (
+            <button
+              type="button"
+              className="scroll-arrow scroll-arrow-right"
+              onClick={() => scrollByPage(1)}
+              aria-label="Scroll right"
+            >
+              ›
+            </button>
+          )}
+        </div>
       )}
     </section>
   )

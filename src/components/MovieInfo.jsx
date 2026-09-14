@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 const MovieInfo = ({
   mediaType, certification, movie, releaseYear, setShowTrailer, trailer, showTrailer,
-  genres, actors, similarMovies, languages, countries, companies
+  genres, actors, similarMovies, languages, countries, companies, directors
 }) => {
   return (
     <div className='movie-info'>
@@ -19,6 +19,7 @@ const MovieInfo = ({
         trailer={trailer}
         showTrailer={showTrailer}
         setShowTrailer={setShowTrailer}
+        directors={directors}
       />
 
       <div className="movie-info-body">

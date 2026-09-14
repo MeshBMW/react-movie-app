@@ -47,6 +47,9 @@ const MovieHero = ({ movie, mediaType, releaseYear, certification, genres,
           <div className="movie-hero-rating">
             <span className="text-amber-400">★</span>
             <span>{movie.vote_average ? movie.vote_average.toFixed(1) : "N/A"}/10</span>
+            <span className='text-sm text-cyan-800'>
+              ({movie.vote_count && movie.vote_count > 999 ? `${Math.round(movie.vote_count / 1000)}K` : `${movie.vote_count}` || 'N/A'})
+            </span>
           </div>
           <div className="movie-hero-actions">
             {trailer && (
@@ -64,7 +67,12 @@ const MovieHero = ({ movie, mediaType, releaseYear, certification, genres,
             </button>
           </div>
 
-          {movie.overview && <p className="movie-hero-overview">{movie.overview}</p>}
+          {movie.overview && <p
+            className="movie-hero-overview"
+            onClick={() => {}}>
+            {movie.overview}
+          </p>
+          }
           {directors.length > 0 && (
             <p className="movie-hero-directors">Directed by {directors.join(", ")}</p>
           )}

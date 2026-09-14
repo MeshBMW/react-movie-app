@@ -46,24 +46,33 @@ export async function searchMulti(query, page = 1) {
   return data;
 }
 
-export async function searchMedia(mediaType, query, page = 1) {
-  const response = await fetch(
-    `${API_BASE_URL}/search/${mediaType}?include_adult=false&query=${encodeURIComponent(query)}&page=${page}`,
-    API_OPTIONS
-  );
-  const data = await response.json();
-  if (!response.ok) throw new Error(data.status_message || `-[TMDB]-Failed to search ${mediaType}`);
-  return data;
-}
+export async function discoverMedia(mediaType, { page = 1, sortBy = "popularity.desc", genreId = "", year = "" } = {}) {
+  const params = new URLSearchParams({
+    include_adult: "false",
+    page: String(page),
+    sort_by: sortBy,
+  });
+  if (genreId) params.set("with_genres", genreId);
+  if (year) params.set(mediaType === "tv" ? "first_air_date_year" : "primary_release_year", year);
 
-export async function discoverMedia(mediaType, { page = 1, sortBy = "popularity.desc" } = {}) {
   const response = await fetch(
-    `${API_BASE_URL}/discover/${mediaType}?include_adult=false&page=${page}&sort_by=${sortBy}`,
+    `${API_BASE_URL}/discover/${mediaType}?${params.toString()}`,
     API_OPTIONS
   );
   const data = await response.json();
   if (!response.ok) throw new Error(data.status_message || `-[TMDB]-Failed to discover ${mediaType}`);
   return data;
+}
+
+// mediaType: 'movie' | 'tv'
+export async function getGenres(mediaType) {
+  const response = await fetch(
+    `${API_BASE_URL}/genre/${mediaType}/list`,
+    API_OPTIONS
+  );
+  const data = await response.json();
+  if (!response.ok) throw new Error(data.status_message || `-[TMDB]-Failed to fetch ${mediaType} genres`);
+  return data.genres || [];
 }
 
 export function getTrailer(videos) {
