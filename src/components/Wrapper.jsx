@@ -3,9 +3,9 @@ import MediaGrid from "./MediaGrid.jsx";
 import TrendingMovies from "./TrendingMovies.jsx";
 
 function Wrapper({
-                   searchTerm, setSearchTerm, isLoading, errorMessage, isSearchMode, isSearching, searchResultsList,
-                   trendingAll, popularMovies, popularTV, trendingSearches, inputRef
-                 }) {
+  searchTerm, setSearchTerm, isLoading, errorMessage, isSearchMode, isSearching, searchResultsList,
+  trendingAll, popularMovies, popularTV, trendingSearches, inputRef
+}) {
   return (
     <div className="wrapper">
       <header>
