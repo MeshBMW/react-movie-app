@@ -22,7 +22,14 @@ const MovieInfo = ({
       />
 
       <div className="movie-info-body">
-        <MovieDetailsList movie={movie} mediaType={mediaType} countries={countries} releaseYear={releaseYear} languages={languages} companies={companies} />
+        <MovieDetailsList
+          movie={movie}
+          mediaType={mediaType}
+          countries={countries}
+          releaseYear={releaseYear}
+          languages={languages}
+          companies={companies}
+        />
         {actors.length > 0 && <MovieActors actors={actors} />}
         <MediaRow
           title={mediaType === 'tv' ? "Similar shows" : "Similar movies"}

@@ -3,7 +3,7 @@ import useRipple from "../hooks/useRipple.js";
 import { useFavoritesContext } from "../utils/FavoritesContext.jsx";
 
 const MediaCard = ({ media, mediaType }) => {
-  const { poster_path, vote_average, original_language, id } = media;
+  const { poster_path, id } = media;
   const type = mediaType ?? media.media_type ?? 'movie';
 
   const displayTitle = media.title ?? media.name;

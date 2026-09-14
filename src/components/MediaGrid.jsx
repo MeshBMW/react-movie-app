@@ -6,7 +6,7 @@ function MediaGrid({ title, items, mediaType, isLoading, errorMessage }) {
   const scrollRef = useRef(null);
 
   const handleWheel = (e) => {
-    if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return; // уже горизонтальный жест (тачпад) — не трогаем
+    if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
     e.preventDefault();
     scrollRef.current?.scrollBy({ left: e.deltaY * 2, behavior: "auto" });
   };
@@ -28,7 +28,11 @@ function MediaGrid({ title, items, mediaType, isLoading, errorMessage }) {
       ) : (
         <ul ref={scrollRef} onWheel={handleWheel}>
           {items.map((item) => (
-            <MediaCard key={item.id} media={item} mediaType={mediaType ?? item.media_type} />
+            <MediaCard
+              key={item.id}
+              media={item}
+              mediaType={mediaType ?? item.media_type}
+            />
           ))}
         </ul>
       )}
