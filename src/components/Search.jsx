@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
-export function Search({ searchTerm, setSearchTerm, inputRef, isSearchMode, isSearching, errorMessage, searchResultsList }) {
+export function Search({ searchTerm, setSearchTerm, isSearchMode, isSearching, errorMessage, searchResultsList }) {
   const closeSearch = () => setSearchTerm('');
   useEffect(() => {
     if (!isSearchMode) return;
@@ -25,7 +25,6 @@ export function Search({ searchTerm, setSearchTerm, inputRef, isSearchMode, isSe
             placeholder="Search through millions of movies"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            ref={inputRef}
           />
         </div>
 
@@ -43,7 +42,7 @@ export function Search({ searchTerm, setSearchTerm, inputRef, isSearchMode, isSe
                   const dateStr = item.release_date ?? item.first_air_date;
                   return (
                     <li key={item.id}>
-                      <Link to={`/${type}/${item.id}`} onClick={closeSearch}>
+                      <Link to={`/${type}/${item.id}`} onClick={closeSearch} target={"_blank"}>
                         <img
                           src={item.poster_path
                             ? `https://image.tmdb.org/t/p/w92/${item.poster_path}`

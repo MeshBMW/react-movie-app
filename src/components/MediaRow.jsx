@@ -55,7 +55,7 @@ function MediaRow({ title, items, mediaType }) {
             const displayTitle = item.title ?? item.name;
             return (
               <li key={item.id}>
-                <Link to={`/${type}/${item.id}`}>
+                <Link to={`/${type}/${item.id}`} target={"_blank"}>
                   <img
                     className="similar-movies-img"
                     src={item.poster_path

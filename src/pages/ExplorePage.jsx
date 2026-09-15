@@ -53,7 +53,7 @@ function ExploreView({ type }) {
       try {
         const data = type === "trending"
           ? await getTrendingAll(1)
-          : await discoverMedia(type, { page: 1, sortBy: "popularity.desc", genreId, year });
+          : await discoverMedia(type, { page: 1, genreId, year,});
         if (cancelled) return;
         const results = (data.results || []).filter((item) => item.media_type !== "person");
         setItems(results);
@@ -98,7 +98,7 @@ function ExploreView({ type }) {
       try {
         const data = type === "trending"
           ? await getTrendingAll(page)
-          : await discoverMedia(type, { page, sortBy: "popularity.desc", genreId, year });
+          : await discoverMedia(type, { page, genreId, year });
         if (cancelled) return;
         const results = (data.results || []).filter((item) => item.media_type !== "person");
         setItems((prev) => [...prev, ...results]);

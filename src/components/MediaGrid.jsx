@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import MediaCard from "./MediaCard.jsx";
 import MovieCardSkeleton from "../utils/MovieCardSkeleton.jsx";
 
-function MediaGrid({ title, items, mediaType, exploreType, isLoading, errorMessage }) {
+function MediaGrid({ title, items, mediaType, exploreType, isLoading, errorMessage, cardLayout="poster" }) {
   const scrollRef = useRef(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(false);
@@ -35,7 +35,7 @@ function MediaGrid({ title, items, mediaType, exploreType, isLoading, errorMessa
   );
 
   return (
-    <section className="all-movies">
+    <section className={cardLayout === "horizontal" ? "all-movies all-movies-horizontal" : "all-movies"}>
       <div className='paragraph'>
         {exploreType ? <Link to={`/explore/${exploreType}`}>{heading}</Link> : heading}
       </div>
@@ -65,6 +65,7 @@ function MediaGrid({ title, items, mediaType, exploreType, isLoading, errorMessa
                 key={item.id}
                 media={item}
                 mediaType={mediaType ?? item.media_type}
+                layout={cardLayout}
               />
             ))}
           </ul>

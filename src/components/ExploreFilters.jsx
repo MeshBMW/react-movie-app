@@ -1,4 +1,6 @@
-const ExploreFilters = ({ genreId, genres, yearOptions, year, setGenreId, setYear }) => {
+const ExploreFilters = ({
+  genreId, genres, yearOptions, year, setGenreId, setYear
+}) => {
   return (
     <div className="explore-filters">
       <select value={genreId} onChange={(e) => setGenreId(e.target.value)}>

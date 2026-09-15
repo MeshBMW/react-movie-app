@@ -26,6 +26,7 @@ const MediaHero = ({ movie, mediaType, releaseYear, certification, genres,
           className="movie-hero-media"
           src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
           alt={`${displayTitle} backdrop`}
+          loading={'lazy'}
         />
       ) : null}
 

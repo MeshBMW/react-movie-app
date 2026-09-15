@@ -3,7 +3,7 @@ import { useDebounce } from "react-use";
 import { getTrendingMovies, updateSearchCount } from "../services/appwrite.js";
 import { Analytics } from "@vercel/analytics/react"
 import Wrapper from "../components/Wrapper.jsx";
-import { discoverMedia, getTrendingAll, searchMulti } from '../services/tmdb.js'
+import {discoverMedia, getTopRatedMovies, getTrendingAll, searchMulti} from '../services/tmdb.js'
 
 function HomePage() {
   const [searchTerm, setSearchTerm] = useState('')
@@ -17,6 +17,7 @@ function HomePage() {
   const [trendingSearches, setTrendingSearches] = useState([]);
   const [horrorMovies, setHorrorMovies] = useState([]);
   const [newMovies, setNewMovies] = useState([]);
+  const [topRatedMovies, setTopRatedMovies] = useState([]);
 
   const [searchResultsList, setSearchResultsList] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
@@ -29,16 +30,20 @@ function HomePage() {
         trendingData,
         tvData,
         horrorMoviesData,
-        newMoviesData] = await Promise.all([
+        newMoviesData,
+        topRatedData
+      ] = await Promise.all([
         getTrendingAll(),
         discoverMedia('tv', { sortBy: 'popularity.desc' }),
         discoverMedia('movie', { sortBy: 'popularity.desc', genreId: '27' }),
-        discoverMedia('movie', { sortBy: 'popularity.desc', year: '2026' }),
+        discoverMedia('movie', { sortBy: 'popularity.desc' }),
+        getTopRatedMovies()
       ]);
       setTrendingAll((trendingData.results || []).filter((item) => item.media_type !== 'person'));
       setPopularTV(tvData.results || []);
       setHorrorMovies(horrorMoviesData.results || []);
       setNewMovies(newMoviesData.results || []);
+      setTopRatedMovies(topRatedData.results || []);
     } catch (error) {
       console.log('-[HomePage]-Error loading home sections:', error);
       setErrorMessage('Failed to load. Please try again later.');
@@ -79,7 +84,6 @@ function HomePage() {
         console.log('-[HomePage]-Error fetching trending searches:', error);
       }
     }
-    inputRef.current.focus();
     loadTrendingSearches();
     loadHome();
   }, []);
@@ -95,7 +99,6 @@ function HomePage() {
   }, [debouncedSearch]);
 
   const isSearchMode = debouncedSearch.trim().length > 0;
-  const inputRef = useRef();
 
   return (
     <>
@@ -113,9 +116,9 @@ function HomePage() {
           trendingAll={trendingAll}
           horrorMovies={horrorMovies}
           newMovies={newMovies}
+          topRatedMovies={topRatedMovies}
           popularTV={popularTV}
           trendingSearches={trendingSearches}
-          inputRef={inputRef}
         />
       </main>
     </>

@@ -45,21 +45,26 @@ export async function searchMulti(query, page = 1) {
 }
 
 export async function discoverMedia(mediaType,
-  { page=1, sortBy="popularity.desc", genreId="", year="" } = {}) {
+  { page = 1, genreId = "", year = "" } = {}) {
   const params = new URLSearchParams({
     include_adult: "false",
     page: String(page),
-    sort_by: sortBy,
+    sort_by: "popularity.desc",
   });
   if (genreId) params.set("with_genres", genreId);
   if (year) params.set(mediaType === "tv" ? "first_air_date_year" : "primary_release_year", year);
 
-  const response = await fetch(
-    `${API_BASE_URL}/discover/${mediaType}?${params.toString()}`,
-    API_OPTIONS
-  );
+  const response = await fetch(`${API_BASE_URL}/discover/${mediaType}?${params.toString()}`, API_OPTIONS);
   const data = await response.json();
+
   if (!response.ok) throw new Error(data.status_message || `-[TMDB]-Failed to discover ${mediaType}`);
+  return data;
+}
+
+export async function getTopRatedMovies(page = 1) {
+  const response = await fetch(`${API_BASE_URL}/movie/top_rated?page=${page}`, API_OPTIONS);
+  const data = await response.json();
+  if (!response.ok) throw new Error(data.status_message || "-[TMDB]-Failed to fetch top rated movies");
   return data;
 }
 
