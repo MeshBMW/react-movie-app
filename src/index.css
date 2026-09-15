@@ -290,7 +290,7 @@ html {
             @apply absolute inset-x-0 bottom-0 z-10 px-4 sm:px-6 pb-6 sm:pb-4 max-w-3xl;
 
             & h1 {
-                @apply text-left mx-0 mt-3 max-w-none text-2xl sm:text-5xl leading-tight text-white;
+                @apply text-left mx-0 mt-9 max-w-none text-2xl sm:text-5xl leading-tight text-white;
             }
         }
         & .movie-hero-meta {
