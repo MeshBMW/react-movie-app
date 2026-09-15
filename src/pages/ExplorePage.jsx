@@ -120,7 +120,7 @@ function ExploreView({ type }) {
   const hasMore = page < totalPages;
 
   return (
-    <section className="explore-page max-w-400 mx-auto">
+    <section className="explore-page">
       <div className="explore-header">
         <Link to="/" className="back-link">← Back</Link>
         <h1>{title}</h1>

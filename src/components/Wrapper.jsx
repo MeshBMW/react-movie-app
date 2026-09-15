@@ -4,8 +4,8 @@ import TrendingMovies from "./TrendingMovies.jsx";
 
 function Wrapper({
   searchTerm, setSearchTerm, isLoading, errorMessage, isSearchMode, isSearching, newMovies,
-  searchResultsList, trendingAll, popularMovies, popularTV, trendingSearches, inputRef, horrorMovies
- }) {
+  searchResultsList, trendingAll, popularTV, trendingSearches, inputRef, horrorMovies
+}) {
   return (
     <div className="wrapper">
       <header>
@@ -31,16 +31,8 @@ function Wrapper({
         errorMessage={isSearchMode ? '' : errorMessage}
       />
       <MediaGrid
-        title="Came out in 2026"
+        title="Brand New Movies of 2026"
         items={newMovies}
-        mediaType="movie"
-        exploreType="movie"
-        isLoading={isLoading}
-        errorMessage={isSearchMode ? '' : errorMessage}
-      />
-      <MediaGrid
-        title="Popular Movies"
-        items={popularMovies}
         mediaType="movie"
         exploreType="movie"
         isLoading={isLoading}

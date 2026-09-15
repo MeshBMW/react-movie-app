@@ -74,7 +74,7 @@ function MovieDetails({ mediaType: mediaTypeProp, mediaId: mediaIdProp }) {
   const directors = movie.credits?.crew?.filter((c) => c.job === "Director").map((d) => d.name) || [];
 
   return (
-    <section className="space-y-6 max-w-400 mx-auto">
+    <section className="space-y-6 max-w-400 mx-auto xs:w-full">
       <title>{displayTitle || 'Trailer Finder'}</title>
       <MovieInfo
         mediaType={mediaType}

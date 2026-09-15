@@ -8,17 +8,15 @@ import { discoverMedia, getTrendingAll, searchMulti } from '../services/tmdb.js'
 function HomePage() {
   const [searchTerm, setSearchTerm] = useState('')
   const [debouncedSearch, setDebouncedSearch] = useState('');
-  const inputRef = useRef();
 
   const [isLoading, setIsLoading] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
 
   const [trendingAll, setTrendingAll] = useState([]);
-  const [popularMovies, setPopularMovies] = useState([]);
   const [popularTV, setPopularTV] = useState([]);
   const [trendingSearches, setTrendingSearches] = useState([]);
   const [horrorMovies, setHorrorMovies] = useState([]);
-  const [newMovies, setNewMoives] = useState([]);
+  const [newMovies, setNewMovies] = useState([]);
 
   const [searchResultsList, setSearchResultsList] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
@@ -29,21 +27,18 @@ function HomePage() {
     try {
       const [
         trendingData,
-        moviesData,
         tvData,
         horrorMoviesData,
         newMoviesData] = await Promise.all([
         getTrendingAll(),
-        discoverMedia('movie', { sortBy: 'popularity.desc' }),
         discoverMedia('tv', { sortBy: 'popularity.desc' }),
         discoverMedia('movie', { sortBy: 'popularity.desc', genreId: '27' }),
         discoverMedia('movie', { sortBy: 'popularity.desc', year: '2026' }),
       ]);
       setTrendingAll((trendingData.results || []).filter((item) => item.media_type !== 'person'));
-      setPopularMovies(moviesData.results || []);
       setPopularTV(tvData.results || []);
       setHorrorMovies(horrorMoviesData.results || []);
-      setNewMoives(newMoviesData.results || [])
+      setNewMovies(newMoviesData.results || []);
     } catch (error) {
       console.log('-[HomePage]-Error loading home sections:', error);
       setErrorMessage('Failed to load. Please try again later.');
@@ -100,6 +95,7 @@ function HomePage() {
   }, [debouncedSearch]);
 
   const isSearchMode = debouncedSearch.trim().length > 0;
+  const inputRef = useRef();
 
   return (
     <>
@@ -115,7 +111,6 @@ function HomePage() {
           isSearching={isSearching}
           searchResultsList={searchResultsList}
           trendingAll={trendingAll}
-          popularMovies={popularMovies}
           horrorMovies={horrorMovies}
           newMovies={newMovies}
           popularTV={popularTV}

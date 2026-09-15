@@ -28,9 +28,7 @@ export async function getMediaById(mediaType, id) {
 
 export async function getTrendingAll(page = 1) {
   const response = await fetch(
-    `${API_BASE_URL}/trending/all/day?page=${page}`,
-    API_OPTIONS
-  );
+    `${API_BASE_URL}/trending/all/day?page=${page}`, API_OPTIONS);
   const data = await response.json();
   if (!response.ok) throw new Error(data.status_message || "-[TMDB]-Failed to fetch trending");
   return data;
@@ -46,7 +44,8 @@ export async function searchMulti(query, page = 1) {
   return data;
 }
 
-export async function discoverMedia(mediaType, { page = 1, sortBy = "popularity.desc", genreId = "", year = "" } = {}) {
+export async function discoverMedia(mediaType,
+  { page=1, sortBy="popularity.desc", genreId="", year="" } = {}) {
   const params = new URLSearchParams({
     include_adult: "false",
     page: String(page),

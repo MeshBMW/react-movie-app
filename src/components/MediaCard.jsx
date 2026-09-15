@@ -34,13 +34,9 @@ const MediaCard = ({ media, mediaType }) => {
         <div className="mt-3">
           <h3>{displayTitle}</h3>
           <div className="content">
-            {/*<div className="rating">*/}
-            {/*  <img src="/star.svg" alt="Star Icon" />*/}
-            {/*  <p>{vote_average ? vote_average.toFixed(1) : "N/A"}</p>*/}
-            {/*</div>*/}
             <p className="year">
               {dateStr ? dateStr.split("-")[0] : "N/A"}
-              {type === 'tv' && <span className="badge px-1.5 mx-0.5 bg-blue-950 rounded-full border border-cyan-900">TV</span>}
+              {type === 'tv' && <span className="badge md:px-1.5 md:text-[14px] text-[12px] px-1 mx-0.5 bg-blue-950 rounded-full border border-cyan-900">TV</span>}
             </p>
             <button
               className="like-btn invisible"
