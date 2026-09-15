@@ -1,7 +1,7 @@
 import { formatRuntime } from "../services/tmdb.js";
 import { useFavoritesContext } from "../utils/FavoritesContext.jsx";
 
-const MovieHero = ({ movie, mediaType, releaseYear, certification, genres,
+const MediaHero = ({ movie, mediaType, releaseYear, certification, genres,
   trailer, showTrailer, setShowTrailer, directors=[]
 }) => {
   const displayTitle = movie.title ?? movie.name;
@@ -81,4 +81,4 @@ const MovieHero = ({ movie, mediaType, releaseYear, certification, genres,
     </div>
   )
 }
-export default MovieHero
+export default MediaHero

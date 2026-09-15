@@ -1,7 +1,7 @@
 import { formatMoney } from "../services/tmdb.js";
 import { InfoRow } from "../utils/InfoRow.jsx";
 
-const MovieDetailsList = ({ movie, mediaType, countries, releaseYear, languages, companies }) => {
+const MediaDetailsList = ({ movie, mediaType, countries, releaseYear, languages, companies }) => {
   const isTV = mediaType === 'tv';
   return (
     <div className="mt-2 max-w-3xl space-y-3">
@@ -26,4 +26,4 @@ const MovieDetailsList = ({ movie, mediaType, countries, releaseYear, languages,
     </div>
   )
 }
-export default MovieDetailsList
+export default MediaDetailsList

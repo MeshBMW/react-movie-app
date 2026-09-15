@@ -17,6 +17,8 @@ function HomePage() {
   const [popularMovies, setPopularMovies] = useState([]);
   const [popularTV, setPopularTV] = useState([]);
   const [trendingSearches, setTrendingSearches] = useState([]);
+  const [horrorMovies, setHorrorMovies] = useState([]);
+  const [newMovies, setNewMoives] = useState([]);
 
   const [searchResultsList, setSearchResultsList] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
@@ -25,14 +27,23 @@ function HomePage() {
     setIsLoading(true);
     setErrorMessage('');
     try {
-      const [trendingData, moviesData, tvData] = await Promise.all([
+      const [
+        trendingData,
+        moviesData,
+        tvData,
+        horrorMoviesData,
+        newMoviesData] = await Promise.all([
         getTrendingAll(),
         discoverMedia('movie', { sortBy: 'popularity.desc' }),
         discoverMedia('tv', { sortBy: 'popularity.desc' }),
+        discoverMedia('movie', { sortBy: 'popularity.desc', genreId: '27' }),
+        discoverMedia('movie', { sortBy: 'popularity.desc', year: '2026' }),
       ]);
       setTrendingAll((trendingData.results || []).filter((item) => item.media_type !== 'person'));
       setPopularMovies(moviesData.results || []);
       setPopularTV(tvData.results || []);
+      setHorrorMovies(horrorMoviesData.results || []);
+      setNewMoives(newMoviesData.results || [])
     } catch (error) {
       console.log('-[HomePage]-Error loading home sections:', error);
       setErrorMessage('Failed to load. Please try again later.');
@@ -105,6 +116,8 @@ function HomePage() {
           searchResultsList={searchResultsList}
           trendingAll={trendingAll}
           popularMovies={popularMovies}
+          horrorMovies={horrorMovies}
+          newMovies={newMovies}
           popularTV={popularTV}
           trendingSearches={trendingSearches}
           inputRef={inputRef}

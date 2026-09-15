@@ -1,6 +1,6 @@
-import MovieHero from "./MovieHero.jsx";
+import MediaHero from "./MediaHero.jsx";
 import MediaRow from "./MediaRow.jsx";
-import MovieDetailsList from "./MovieDetailsList.jsx";
+import MediaDetailsList from "./MediaDetailsList.jsx";
 import MovieActors from "./MovieActors.jsx";
 import { Link } from "react-router-dom";
 
@@ -10,7 +10,7 @@ const MovieInfo = ({
 }) => {
   return (
     <div className='movie-info'>
-      <MovieHero
+      <MediaHero
         movie={movie}
         mediaType={mediaType}
         releaseYear={releaseYear}
@@ -23,7 +23,7 @@ const MovieInfo = ({
       />
 
       <div className="movie-info-body">
-        <MovieDetailsList
+        <MediaDetailsList
           movie={movie}
           mediaType={mediaType}
           countries={countries}
