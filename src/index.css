@@ -74,13 +74,6 @@ html {
     box-shadow: 0 0 0 4px rgba(171, 139, 255, 0.15),
     0 0 24px rgba(171, 139, 255, 0.25);
   }
-  .flex-center {
-    @apply flex items-center;
-  }
-  .flex-c-c {
-    @apply flex items-center justify-center;
-  }
-
   button:focus-visible,
   input:focus-visible {
     outline: none;
@@ -252,7 +245,7 @@ html {
         }
 
         & .movie-info-body {
-            @apply mx-auto px-5 pb-3 space-y-6;
+            @apply md:px-5 md:pb-3 pl-2 py-0 pr-0 space-y-6;
         }
 
         & .movie-hero {
@@ -287,7 +280,7 @@ html {
                     linear-gradient(to right, rgba(3,0,20,0.75) 0%, rgba(3,0,20,0.1) 55%);
         }
         & .movie-hero-content {
-            @apply absolute inset-x-0 bottom-0 z-10 px-4 sm:px-6 pb-6 sm:pb-4 max-w-3xl;
+            @apply absolute inset-x-0 bottom-0 z-10 px-4 sm:px-6 pb-6 sm:pb-4 max-w-3xl xs:w-full;
 
             & h1 {
                 @apply text-left mx-0 mt-3 max-w-none text-2xl sm:text-5xl leading-tight text-white;
@@ -421,6 +414,12 @@ html {
   -webkit-text-stroke: 5px rgba(206, 206, 251, 0.5);
   font-size: 180px;
   font-family: "Bebas Neue", sans-serif;
+}
+@utility flex-center {
+    @apply flex items-center;
+}
+@utility flex-c-c {
+    @apply flex items-center justify-center;
 }
 
 @utility hide-scrollbar {

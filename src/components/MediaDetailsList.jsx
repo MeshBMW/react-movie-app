@@ -4,7 +4,7 @@ import { InfoRow } from "../utils/InfoRow.jsx";
 const MediaDetailsList = ({ movie, mediaType, countries, releaseYear, languages, companies }) => {
   const isTV = mediaType === 'tv';
   return (
-    <div className="mt-2 max-w-3xl space-y-3">
+    <div className="mt-2 max-w-3xl space-y-3 xs:w-full">
       <InfoRow label="Status">{movie.status || "N/A"}</InfoRow>
       <InfoRow label={isTV ? "First aired" : "Release date"}>{releaseYear || "N/A"}</InfoRow>
       <InfoRow label="Countries">{countries}</InfoRow>
