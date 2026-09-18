@@ -280,11 +280,7 @@ html {
                     linear-gradient(to right, rgba(3,0,20,0.75) 0%, rgba(3,0,20,0.1) 55%);
         }
         & .movie-hero-content {
-<<<<<<< HEAD
             @apply absolute inset-x-0 bottom-0 z-10 px-4 sm:px-6 pb-6 sm:pb-4 max-w-3xl xs:w-full;
-=======
-            @apply absolute inset-x-0 bottom-0 z-10 px-4 sm:px-6 pb-6 sm:pb-4 max-w-3xl mt-10;
->>>>>>> a364ba7486ca824bac31ab4c4c8068b279281c16
 
             & h1 {
                 @apply text-left mx-0 mt-9 max-w-none text-2xl sm:text-5xl leading-tight text-white;
