@@ -34,7 +34,7 @@ const MediaCard = ({ media, mediaType, layout = "poster" }) => {
           <div className="content">
             <p className="year">
               {dateStr ? dateStr.split("-")[0] : "N/A"}
-              {type === 'tv' && <span className="badge md:px-1.5 md:text-[14px] text-[12px] px-1 mx-0.5 bg-blue-950 rounded-full border border-cyan-900">TV</span>}
+              {type === 'tv' && <span>TV</span>}
             </p>
             <button
               className="like-btn invisible"

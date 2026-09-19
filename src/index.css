@@ -84,7 +84,7 @@ html {
   }
 
     .wrapper {
-        @apply px-4 py-6 xs:p-6 sm:py-10 sm:px-8 lg:px-16 xl:px-20 max-w-370 xs:w-full mx-auto flex flex-col gap-8 sm:gap-12 relative z-10;
+        @apply px-4 py-6 xs:p-3 sm:py-5 sm:px-8 lg:px-16 xl:px-20 max-w-370 xs:w-full mx-auto flex flex-col gap-8 sm:gap-12 relative z-10;
     }
 
   .trending {
@@ -227,6 +227,9 @@ html {
         }
         & .content .year {
             @apply text-gray-100 font-medium text-sm shrink-0;
+            & span {
+                @apply md:px-1.5 md:text-[14px] text-[12px] px-1 mx-0.5 bg-blue-950 rounded-full border border-cyan-900;
+            }
         }
     }
     .movie-card-horizontal img {
@@ -240,8 +243,8 @@ html {
         @apply relative;
 
         & .go-back-btn {
-            @apply rounded-lg max-w-100 px-4 py-2 text-white
-            mt-5 flex flex-row items-center justify-center bg-blue-950;
+            @apply rounded-lg max-w-50 px-4 py-2 text-white
+            mt-5 flex items-center justify-center bg-blue-950 mr-2 mb-2;
         }
 
         & .movie-info-body {

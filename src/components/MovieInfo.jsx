@@ -37,7 +37,7 @@ const MovieInfo = ({
           items={similarMovies}
           mediaType={mediaType}
         />
-        <Link to="/" className="go-back-btn">← Back to Home</Link>
+      <Link to="/" className="go-back-btn">← Back to Home</Link>
       </div>
     </div>
   )

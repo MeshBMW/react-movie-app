@@ -33,7 +33,13 @@ const MediaHero = ({ movie, mediaType, releaseYear, certification, genres,
       {!showTrailer && <div className="movie-hero-overlay" />}
 
       {showTrailer && (
-        <button onClick={() => setShowTrailer(false)} className="close-trailer-btn-hero" aria-label="Close trailer">✕</button>
+        <button
+          onClick={() => setShowTrailer(false)}
+          className="close-trailer-btn-hero"
+          aria-label="Close trailer"
+        >
+          ✕
+        </button>
       )}
 
       {!showTrailer && (
