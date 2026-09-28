@@ -1,9 +1,9 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { useDebounce } from "react-use";
 import { getTrendingMovies, updateSearchCount } from "../services/appwrite.js";
 import { Analytics } from "@vercel/analytics/react"
 import Wrapper from "../components/Wrapper.jsx";
-import {discoverMedia, getTopRatedMovies, getTrendingAll, searchMulti} from '../services/tmdb.js'
+import { discoverMedia, getTopRatedMovies, getTrendingAll, searchMulti } from '../services/tmdb.js'
 
 function HomePage() {
   const [searchTerm, setSearchTerm] = useState('')
@@ -34,9 +34,9 @@ function HomePage() {
         topRatedData
       ] = await Promise.all([
         getTrendingAll(),
-        discoverMedia('tv', { sortBy: 'popularity.desc' }),
-        discoverMedia('movie', { sortBy: 'popularity.desc', genreId: '27' }),
-        discoverMedia('movie', { sortBy: 'popularity.desc' }),
+        discoverMedia('tv'),
+        discoverMedia('movie', { genreId: '27' }),
+        discoverMedia('movie'),
         getTopRatedMovies()
       ]);
       setTrendingAll((trendingData.results || []).filter((item) => item.media_type !== 'person'));

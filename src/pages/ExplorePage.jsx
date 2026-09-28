@@ -2,14 +2,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import MediaCard from "../components/MediaCard.jsx";
 import MovieCardSkeleton from "../utils/MovieCardSkeleton.jsx";
-import { discoverMedia, getGenres, getTrendingAll } from "../services/tmdb.js";
+import { discoverMedia, getGenres, getTrendingAll, TITLES } from "../services/tmdb.js";
 import ExploreFilters from "../components/ExploreFilters.jsx";
-
-const TITLES = {
-  trending: "Trending Now",
-  movie: "Popular Movies",
-  tv: "Popular TV Shows",
-};
 
 function ExploreView({ type }) {
   const [items, setItems] = useState([]);

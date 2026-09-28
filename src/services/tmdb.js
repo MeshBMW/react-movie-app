@@ -10,6 +10,11 @@ export const API_OPTIONS = {
     Authorization: `Bearer ${API_KEY}`,
   },
 };
+export const TITLES = {
+  trending: "Trending Now",
+  movie: "Popular Movies",
+  tv: "Popular TV Shows",
+};
 
 // mediaType: 'movie' | 'tv'
 export async function getMediaById(mediaType, id) {

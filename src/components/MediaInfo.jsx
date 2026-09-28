@@ -4,7 +4,7 @@ import MediaDetailsList from "./MediaDetailsList.jsx";
 import MovieActors from "./MovieActors.jsx";
 import { Link } from "react-router-dom";
 
-const MovieInfo = ({
+const MediaInfo = ({
   mediaType, certification, movie, releaseYear, setShowTrailer, trailer, showTrailer,
   genres, actors, similarMovies, languages, countries, companies, directors
 }) => {
@@ -42,4 +42,4 @@ const MovieInfo = ({
     </div>
   )
 }
-export default MovieInfo
+export default MediaInfo

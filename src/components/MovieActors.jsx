@@ -11,7 +11,7 @@ const MovieActors = ({ actors }) => {
                   : "/images/no-image.jpg"
               }
               alt={actor.name}
-              loading={'lazy'}
+              loading="lazy"
             />
             <p>{actor.name}</p>
           </li>

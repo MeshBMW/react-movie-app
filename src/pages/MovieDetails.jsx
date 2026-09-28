@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Spinner from "../components/Spinner.jsx";
 import { useParams } from "react-router-dom";
 import { getMediaById, getTrailer, getCertification, getTVCertification } from "../services/tmdb.js";
-import MovieInfo from "../components/MovieInfo.jsx";
+import MediaInfo from "../components/MediaInfo.jsx";
 
 function MovieDetails({ mediaType: mediaTypeProp, mediaId: mediaIdProp }) {
   const params = useParams();
@@ -76,7 +76,7 @@ function MovieDetails({ mediaType: mediaTypeProp, mediaId: mediaIdProp }) {
   return (
     <section className="space-y-6 max-w-340 mx-auto xs:w-full">
       <title>{displayTitle || 'Trailer Finder'}</title>
-      <MovieInfo
+      <MediaInfo
         mediaType={mediaType}
         releaseYear={releaseYear}
         movie={movie}
