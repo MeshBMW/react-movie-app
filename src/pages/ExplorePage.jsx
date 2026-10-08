@@ -1,9 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Link, useParams } from "react-router-dom";
-import MediaCard from "../components/MediaCard.jsx";
-import MovieCardSkeleton from "../utils/MovieCardSkeleton.jsx";
+import { useParams } from "react-router-dom";
 import { discoverMedia, getGenres, getTrendingAll, TITLES } from "../services/tmdb.js";
-import ExploreFilters from "../components/ExploreFilters.jsx";
+import ExploreMediaDetails from "../components/ExploreMediaDetails.jsx";
 
 function ExploreView({ type }) {
   const [items, setItems] = useState([]);
@@ -114,46 +112,22 @@ function ExploreView({ type }) {
   const hasMore = page < totalPages;
 
   return (
-    <section className="explore-page">
-      <div className="explore-header">
-        <Link to="/" className="back-link">← Back</Link>
-        <h1>{title}</h1>
-      </div>
-
-      {showFilters && (
-        <ExploreFilters
-          genreId={genreId}
-          genres={genres}
-          yearOptions={yearOptions}
-          year={year}
-          setGenreId={setGenreId}
-          setYear={setYear}
-        />
-      )}
-
-      {errorMessage && <p className="text-red-500">{errorMessage}</p>}
-
-      {!isLoading && items.length === 0 && !errorMessage ? (
-        <p className="explore-end">No results match these filters.</p>
-      ) : (
-        <ul className="explore-grid">
-          {items.map((item) => (
-            <MediaCard
-              key={`${item.id}-${item.media_type ?? type}`}
-              media={item}
-              mediaType={type === "trending" ? undefined : type}
-            />
-          ))}
-          {isLoading && Array.from({ length: 12 }).map((_, i) => <MovieCardSkeleton key={`skeleton-${i}`} />)}
-        </ul>
-      )}
-
-      {!hasMore && items.length > 0 && (
-        <p className="explore-end">You've reached the end.</p>
-      )}
-
-      <div ref={sentinelRef} className="explore-sentinel" />
-    </section>
+    <ExploreMediaDetails
+        year={year}
+        yearOptions={yearOptions}
+        title={title}
+        hasMore={hasMore}
+        genres={genres}
+        genreId={genreId}
+        setGenreId={setGenreId}
+        setYear={setYear}
+        showFilters={showFilters}
+        errorMessage={errorMessage}
+        isLoading={isLoading}
+        items={items}
+        sentinelRef={sentinelRef}
+        type={type}
+    />
   );
 }
 
